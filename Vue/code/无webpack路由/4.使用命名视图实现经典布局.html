@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <script src="./vue-router-3.0.1.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+        <router-view name="left"></router-view>
+        <router-view name="main"></router-view>
+    </div>
+</body>
+
+<template id="head">
+    <h2>头部</h2>
+</template>
+
+<template id="left">
+    <h2>侧边栏</h2>
+</template>
+
+<template id="main">
+    <h2>中间</h2>
+</template>
+
+<script>
+    var headbox = {
+        template: '#head',
+    }
+    var leftbox = {
+        template: '#left',
+    }
+    var mainbox = {
+        template: '#main',
+    }
+    let vue_router = new VueRouter({
+        routes: [
+            /*  { path: '/', component: 'head' },
+             { path: '/', component: 'left' },
+             { path: '/', component: 'mian' } */
+            {
+                path: '/', components: {
+                    'default': 'headbox',
+                    'left': 'leftbox',
+                    'main': 'mainbox'
+                }
+            }
+        ]
+    })
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        router: vue_router
+    })
+</script>
+
+</html>

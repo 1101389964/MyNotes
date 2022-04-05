@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>4</button>
+    <script>
+      var buttons = document.querySelectorAll("button");
+      //通过闭包把for循环里面的i传递给点击事件；
+      for (var i = 0; i < buttons.length; i++) {
+        (function (i) {
+          buttons[i].addEventListener("click", function () {
+            console.log(i);
+          });
+        })(i);
+      }
+      //通过闭包把for循环里面的i传递给定时器；
+      for (var i = 0; i < buttons.length; i++) {
+        (function (i) {
+          setTimeout(function () {
+            buttons[i].click();
+          }, i * 1000);
+        })(i);
+      }
+    </script>
+  </body>
+</html>

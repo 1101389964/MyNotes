@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+<body>
+
+</body>
+<script>
+    /* var name1 = 13;
+    var name2 = 12;
+    var name;
+    name = name1;
+    name1 = name2;
+    name2 = name;
+    console.log(typeof(name1 - name2)); */
+
+        // console.log(5 / 2); /* 2.5 */
+        // console.log(4 % 3); /* 1 */
+        // console.log((3 * 8) === "24"); /* false */ /* 左右两边数据类型一样且数字一样才恒等 */
+        // console.log((3 * 8) === 24); /* ture */
+        // console.log(3 * 8 == "24"); /* ture */ /* 默认把字符转换为数字类型 */
+        // console.log(13 != 12); /* ture */
+        // console.log("13" != 12); /* ture */ /* 默认把字符转换为数字类型 */
+
+    /* 判断是否为为闰年*/
+    /* var year = prompt("请输入一个年份");
+    if ((year % 4) == 0) {
+        alert("是闰年");
+    } else if ((year % 4) != 0) {
+        alert("不是闰年");
+    } */
+    /* var grade = prompt("请输入你的成绩");
+    if (grade >= 90) {
+        alert("成绩A");
+    } else if (grade >= 80) {
+        alert("成绩B");
+    } else if (grade >= 70) {
+        alert("成绩C");
+    } else if (grade >= 60) {
+        alert("成绩D");
+    } else {
+        alert("成绩E");
+    } */
+
+
+    /* var time = prompt("请输入一个“0-59”的数字");
+    var now = time < 10 ? "0" + time : time;
+    alert(now);/* 三元表达式 */
+
+    /* var vegetables = prompt("请输入你想要的蔬菜");
+    switch (vegetables) {
+        case ("黄瓜"):
+            alert("你想要的蔬菜是黄瓜");
+            break;
+        case ("西红柿"):
+            alert("你想要的蔬菜是西红柿");
+            break;
+        default:
+            alert("没有你想要的蔬菜");
+    } */
+
+    /* var time = prompt("现在的时间");
+    switch (time) {
+        case "8:00":
+            alert("上午好");
+            break;
+        case "12:00":
+            alert("中午好");
+            break;
+        case "18:00":
+            alert("晚上好");
+            break;
+        default:
+            alert("正点还没到");
+
+    } */
+    /* alert("请依次输入两个数字，计算机将弹出最大的那一个");
+    var number1 = prompt("请输入一个数字");
+    var number2 = prompt("请再输入一个数字");
+    if (number1 > number2) {
+        alert("最大的那个数字是" + number1);
+    } else if (number2 > number1) {
+        alert("最大的那个数字是" + number2);
+    } else {
+        alert("这两个数字大小相等")
+    } */
+
+        // 1-100的所有整数之和。
+    /* var number = 0;
+    for (var i = 1; i <= 100; i++) {
+        number += i;
+    }
+    alert("1-100之间所有正数的总和为" + number); */
+
+        //  求1-100之间所有数的平均值
+    /* var number = 0;
+    for (var i = 1; i <= 100; i++) {
+        number += i;
+    }
+    number /= 100;
+    alert("1-100之间所有数的平均值为" + number); */
+
+        // 1-100所有的奇数和与偶数和
+    /* var odd = 0,
+        even = 0;
+    for (var i = 1; i <= 100; i++) {
+        switch (i) {
+            case (i % 2 == 0):
+                even += i;
+                break;
+            default:
+                odd += i;
+        }
+    }
+    alert("1-100之间所有偶数的总和为" + even + "\n1-100之间所有奇数的总和为" + odd); */
+        // switch判断；
+
+    /*  var odd = 0,
+         even = 0;
+     for (var i = 1; i <= 100; i++) {
+         if (i % 2 == 0) {
+             even += i;
+         } else {
+             odd += i;
+         }
+     }
+     alert("1-100之间所有偶数的总和为" + even + "\n1-100之间所有奇数的总和为" + odd); */
+        //  if判断；
+
+        // 求1-100之间能被三整除的数字之和
+    /* var sum = 0
+    for (var i = 0; i <= 100; i++) {
+        if (i % 3 == 0) {
+            sum += i;
+        } else {
+            sum = sum;
+        }
+    }
+    alert("1-100之间能被三整除的数字之和为" + sum); */
+
+    /* var sum = 0
+    for (var i = 0; i <= 100; i++) {
+        switch (i) {
+            case (i % 3 == 0):
+                sum += i;
+                break;
+            default:
+                sum = sum;
+        }
+    }
+    alert("1-100之间能被三整除的数字之和为" + sum); */
+
+    /* var num = prompt("请输入班级人数"),
+        average = 0,
+        sum = 0;
+    for (var i = 1; i <= num; i++) {
+        score = prompt("请输入第" + i + "个同学的成绩");
+        sum += Number(score);
+    }
+    average = sum / num;
+    alert("班级总的平均分是" + average); */
+
+    /* var num = prompt("请输入星星的个数"),
+        x = "";
+    for (var i = num; i > 0; i--) {
+        for (var j = 1; j < i; j++) {
+            x = x + "★";
+        }
+        x = x + "\n";
+    }
+    alert(x); */
+
+        // 乘法口诀表
+    /* var i = 1,
+        j = 1,
+        s = "";
+    for (i = 1; i <= 9; i++) {
+        for (j = 1; j <= i; j++) {
+            s = s + j + "*" + i + "=" + (i * j) + "\t";
+        }
+        s = s + "\n";
+    }
+    console.log(s); */
+</script>
+</head>
+
+<body>
+
+</body>
+
+</html>

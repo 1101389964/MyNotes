@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <my-comp></my-comp>
+        <mycomponent></mycomponent>
+        <selfcomp>selfcomp</selfcomp>
+    </div>
+</body>
+<!-- 1.通过script来分离，类型必须是 -->
+<script type='text/x-template' id="comp">
+    <div>
+        <h2>script分离写法1</h2>
+        <h2>script分离写法2</h2>
+    </div>
+</script>
+<!-- 2通过template来分离 -->
+<template id="com">
+    <div>
+        <h2>template分离写法1</h2>
+        <h2>template分离写法2</h2>
+    </div>
+</template>
+<script>
+    //.注册组件
+    //component有两个参数，第一个参数是定义组件的名字，后面一个参数是组件构造器
+    var com = { template: '#com' }
+    Vue.component('my-comp', { template: '#comp' })
+    Vue.component('mycomponent', { template: '#com' })
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+        components: {
+            selfcomp: com
+            //Vue实例里面不能直接使用外面的#com，所以先在定义全局变量com引入#com
+        }
+    })
+</script>
+
+</html>

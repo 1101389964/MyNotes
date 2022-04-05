@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='message'>
+        <h2>{{text}}</h2>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: '',
+        },
+        /* 侦听器监听就是其属性本身的变化，这是与计算属性不同的地方 */
+        watch: {
+            message: function (newValue, oldValue) {
+                console.log(newValue + '----' + oldValue);
+                /* newValue是以前的值，oldValue是新值 */
+            }
+        },
+        /* 计算属性是其依赖属性的值发生变化时，这个属性就会自动更新，与之相关的DOM也会更新 */
+        computed: {
+            text: function () {
+                return (this.message.split('').reverse().join(''));
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="first" />
+      <input type="text" v-model="second" />
+      <div>{{message}}</div>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          first: "",
+          second: "",
+          //   message: "",//message是函数，不可以定义为常量
+        },
+        computed: {
+          message: function () {
+            return this.first + " " + this.second;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

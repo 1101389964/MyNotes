@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <textarea class="result"></textarea>
+</body>
+<script>
+  let text = document.querySelector(".result");
+  window.addEventListener("keydown", () => {
+    //创建对象
+    let XHR = new XMLHttpRequest();
+    //设置响应体数据类型
+    XHR.responseType = "json";//设置了之后就可以不用手动把json转化为对象了，将会自动转化为对象；
+    //初始化URL
+    XHR.open("GET", "http://127.0.0.1:8000/json_server");
+    //发送
+    XHR.send();
+    //事件绑定
+    XHR.onreadystatechange = () => {
+      if (XHR.readyState === 4) {
+        if (XHR.status >= 200 && XHR.status < 300) {
+          //1.手动将json字符串转化为JSON
+          /* let data = JSON.parse(XHR.response);
+          console.log(data);
+          text.innerHTML = data.message; */
+          //2.自动将json转化为对象
+          let data = XHR.response;
+          text.innerHTML = data.message;
+        }
+      }
+    }
+  })
+</script>
+
+</html>

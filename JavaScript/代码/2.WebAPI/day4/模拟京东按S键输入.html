@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <script>
+      var input = document.querySelector("input");
+      document.addEventListener("keyup", function (e) {
+        if (e.keyCode == 83) {
+          input.focus();
+        }
+      }); //当按下键盘松开事件触发，所以光标里面不会显示字母
+      /* document.addEventListener("keydown", function (e) {
+        if (e.keyCode == 83) {
+          input.focus();
+        }
+      }); //按下键盘触发，光标里面会显示字母*/
+    </script>
+  </body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .normal {
+        color: #ccc;
+      }
+      .wrong {
+        color: red;
+      }
+      .right {
+        color: #008000;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" /><span class="normal"> 请输入姓名</span>
+    <script>
+      var input = document.querySelector("input");
+      var span = document.querySelector("span");
+      var reg = /[a-zA-Z-_]{6,16}/;
+      input.addEventListener("blur", function () {
+        if (reg.test(this.value)) {
+          span.className = "normal right";
+          span.innerHTML = "用户名输入的格式正确";
+        } else {
+          span.className = "normal wrong";
+          span.innerHTML = "用户名输入的格式不正确";
+        }
+      });
+    </script>
+  </body>
+</html>

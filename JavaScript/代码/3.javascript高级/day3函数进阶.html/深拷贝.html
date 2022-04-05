@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var obj = {
+        id: 1,
+        name: "andy",
+        msg: {
+          age: 18,
+        },
+        color: ["pink", "red"],
+      };
+      var o = {};
+      var n = 1;
+      function fun(newobj, oldobj, n) {
+        for (var k in oldobj) {
+          console.log(n); ////1
+          n++;
+          console.log(k); ////2
+          var item = oldobj[k];
+          console.log(item); ////3
+
+          if (item instanceof Array) {
+            newobj[k] = [];
+            console.log("Array");
+            fun(newobj[k], item, n);
+          } //数组必须写在对象的前面,因为数组也属于对象。
+          else if (item instanceof Object) {
+            newobj[k] = {};
+            console.log("Object");
+            fun(newobj[k], item, n);
+          } else {
+            newobj[k] = item;
+            console.log("else");
+          }
+        }
+      }
+      fun(o, obj, n);
+      console.log(o);
+    </script>
+  </body>
+</html>

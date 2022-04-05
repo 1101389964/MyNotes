@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        position: absolute;
+        width: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="../day2/1.jpg" alt="" />
+    <script>
+      var img = document.querySelector("img");
+      addEventListener("mousemove", function (e) {
+        var X = e.pageX;
+        var Y = e.pageY;
+        console.log(X, Y);
+        img.style.left = X + "px";
+        img.style.top = Y + "px";
+      });
+    </script>
+  </body>
+</html>

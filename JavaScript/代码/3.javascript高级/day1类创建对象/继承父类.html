@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      class father {
+        constructor(a, b) {
+          this.a = a;
+          this.b = b;
+        }
+        name() {
+          alert(this.a + this.b);
+        }
+      }
+      class Son extends father {
+        //extends可以继承父类的方法（函数）;
+        constructor() {
+          super(x, y); //super可以调用父类的函数
+        }
+      }
+      var son = new Son(1, 2);
+      son.name();
+    </script>
+  </body>
+</html>

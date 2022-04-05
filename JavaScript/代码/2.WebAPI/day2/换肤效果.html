@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: url(1.jpg) no-repeat center top;
+    }
+
+    #background {
+      margin-left: 50%;
+      transform: translateX(-50%);
+      width: 70px;
+      height: 20px;
+      line-height: 20px;
+      text-align: center;
+      border-radius: 5px;
+      background: rgb(177, 55, 51);
+      color: #222;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    ul {
+      padding: 0;
+      margin: 0;
+    }
+
+    .baidu {
+      display: none;
+      margin: 30px auto;
+      width: 408px;
+    }
+
+    .baidu li {
+      float: left;
+      margin: 0 1px;
+      cursor: pointer;
+    }
+
+    .baidu img {
+      width: 100px;
+    }
+
+    .baidu span {
+      margin-right: 0;
+      width: 20px;
+      border-radius: 5px;
+      background: rgba(233, 20, 20, 1);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="background">背景设置</div>
+  <div class="baidu">
+    <ul>
+      <li><img src="1.jpg" /></li>
+      <li><img src="2.jpg" /></li>
+      <li><img src="3.jpg" /></li>
+      <li><img src="4.jpg" /></li>
+    </ul>
+    <span>关闭</span>
+  </div>
+  <script>
+    var body = document.querySelector("body");
+    var div = document.querySelector("div");
+    var baidu = document.querySelector(".baidu");
+    var imgs = baidu.querySelectorAll("img");
+    var close = baidu.querySelector("span");
+    div.onclick = function () {
+      baidu.style.display = "block";
+    };
+    close.onclick = function () {
+      baidu.style.display = "none";
+    }
+    for (var i = 0; i < imgs.length; i++) {
+      imgs[i].onclick = function () {
+        body.style.backgroundImage = "url(" + this.src + ")";
+      }
+    }
+  </script>
+</body>
+
+</html>

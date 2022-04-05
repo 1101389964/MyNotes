@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 100px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <button>发送请求</button>
+  <div></div>
+</body>
+
+<script>
+  const btn = document.querySelector("button");
+  const div = document.querySelector("div");
+  btn.addEventListener("click", () => {
+    const XHR = new XMLHttpRequest();
+    //超时设置2s,若2s之后没有相呼就把请求取消
+    XHR.timeout = 2000;
+    //超时回调
+    XHR.ontimeout = () => {
+      alert("网络异常，请稍后重试！")
+    }
+    XHR.open("GET", "http://127.0.0.1:8000/later");
+    XHR.send();
+    XHR.onreadystatechange = () => {
+      if (XHR.readyState === 4) {
+        if (XHR.status >= 200 && XHR.status < 300) {
+          div.innerHTML = XHR.response;
+        }
+      }
+    }
+  })
+</script>
+
+</html>

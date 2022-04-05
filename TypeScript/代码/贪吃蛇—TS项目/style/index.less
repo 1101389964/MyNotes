@@ -1,0 +1,60 @@
+@bg-color: -webkit-linear-gradient(left top, #fef711, #fd3758);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font: bold 20px "Courier";
+}
+
+#main {
+  width: 360px;
+  height: 420px;
+  background: @bg-color;
+  margin: 100px auto;
+  box-shadow: 3px 3px 3px rgba(0, 0, 1, 0.3);
+  border-radius: 30px;
+  //开启弹性盒子
+  display: flex;
+  //设置主轴方向
+  flex-flow: column;
+  //设置侧轴对齐方式
+  align-items: center;
+  //设置主轴对齐方式
+  justify-content: space-around;
+  /* 贪吃蛇活动界面 */
+  #region {
+    width: 304px;
+    height: 304px;
+    border: 2px solid #fff;
+    position: relative;
+    /* 设置蛇的样式 */
+    #snake {
+      div {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        background-color: #fff;
+        border: 1px solid #fef711;
+      }
+    }
+    /* 食物 */
+    #food {
+      position: absolute;
+      left: 40px;
+      top: 50px;
+      width: 10px;
+      height: 10px;
+      background-color: #fff;
+      border: 1px solid #fef711;
+      border-radius: 50%;
+    }
+  }
+  /* 计分板 */
+  #score-level {
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+    color: #fff;
+  }
+}

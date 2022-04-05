@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var fu = (function () {
+        var start = 5;
+        var money = 0;
+        return {
+          normal: function (length) {
+            if (length <= 5) {
+              money = 8;
+            } else {
+              money = (length - start) * 5 + 8;
+            }
+            return money;
+          },
+          plus: function (ture) {
+            ture = ture ? money + 10 : money;
+            return ture;
+          },
+        };
+      })();
+      console.log(fu.normal(4));
+      console.log(fu.plus(true));
+      console.log(fu.normal(8));
+      console.log(fu.plus(true));
+    </script>
+  </body>
+</html>

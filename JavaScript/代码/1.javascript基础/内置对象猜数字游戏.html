@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function getrandom(min, max) {
+            var ran = Math.floor(Math.random() * (max - min + 1)) + min; //返回一个min到max整数的公式；
+            return (ran);
+        }
+        var a = getrandom(1, 10);
+        var b = prompt('请输入一个1-10的数字');
+        while (a != b) {
+            if (b > a)
+                var b = prompt('数字大了，请继续；');
+            else
+                var b = prompt('数字小了，请继续；');
+        }
+        alert('你猜对了，程序结束。');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

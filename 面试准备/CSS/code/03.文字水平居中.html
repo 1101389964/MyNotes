@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+    块级元素使用text-align: center;可以使文字居中
+    但行内元素或者行类块使用text-align: center;不能使文字居中
+    可以给父级添加text-align: center;或者改变为block模式，使子元素文字居中
+    */
+    /* body {
+      text-align: center;
+    } */
+
+    h1 {
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+    }
+
+    span {
+      /* 并没有生效 */
+      display: inline-block;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>h1</h1>
+  <p>p</p>
+  <span>span</span>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <!-- 安装路由 -->
+    <script src="./vue-router-3.0.1.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div>
+            <a href="#/login">登录</a>
+            <a href="#/resgister">注册</a>
+            <br>
+            <!-- vue官方提供的链接标签，默认渲染为<a>标签 -->
+            <router-link to="/login" tag="button">登录</router-link>
+            <!-- tag="span"会把默认的<a>标签替换为span标签。还会保留点击事件 -->
+            <router-link to="/resgister">注册</router-link>
+        </div>
+        <!-- 这是vue-router提供的元素，用来当占位符，将来路由规则匹配到的组件，就会展示到router-view中-->
+        <router-view></router-view>
+    </div>
+</body>
+<template id="tmp">
+    <h2>登录组件</h2>
+</template>
+<template id="mp">
+    <h2>注册组件</h2>
+</template>
+<script>
+    var login = {
+        template: '#tmp'
+    }
+    var resgister = {
+        template: '#mp'
+    }
+    /* 当导入了vue-router包只有，在window全局对象中会生产一个VueRouter构造函数 */
+    var routerObj = new VueRouter({
+        //这个配置对象中的route表示【路由匹配规则】
+        routes: [
+            { path: '/login', component: login },
+            { path: '/resgister', component: resgister },
+            /* 
+            path属性:表示监听  哪个路由地址
+            component:表示如果路由是前面匹配到的path，则展示component属性对应的组件
+             */
+            { path: '/', redirect: '/login' },//该方法表示：当游览器以/结尾时会默认把/替换为/login
+        ],
+        linkActiveClass: 'myclass'//该方法可以给<router-link>添加自己的类名
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+        components: {
+        },
+        router: routerObj //将路由对象注册到app实例上，用来监听URL地址变化，然后展示对应组件
+    })
+</script>
+
+</html>

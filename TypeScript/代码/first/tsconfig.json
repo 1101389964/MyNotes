@@ -1,0 +1,12 @@
+{
+  "include": ["./src/**/*"],
+  //表示当前目录下src文件里面的任意目录任意文件都可以被编译
+  //第一个**表示任意目录，第二个*表示任意文件
+  "exclude": ["./src/exclude/**/*"],
+  //表示当前目录下src/exclude文件里面的任意目录任意文件都不能被编译
+  "compilerOptions": {
+    "target": "ES2016", //编写的ts代码将会被编译为ES6版本的js代码
+    "module": "CommonJS",
+    "outDir": "./dist"
+  }
+}

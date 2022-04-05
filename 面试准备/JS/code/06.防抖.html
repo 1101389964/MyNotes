@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>点击付款</button>
+</body>
+<script>
+  const btn = document.querySelector("button");
+
+  function paymony(e) {
+    console.log(e);
+    console.log(this);
+    console.log("已付款");
+  }
+
+  //高阶函数，由于传递了参数
+  function debounce(callback, later) {
+    let timer;//这里使用了闭包
+    //1、timer定时器变量需要放在函数外面，如果放在里面每次执行函数都会产生新的内存，timer就不是原来的timer
+    return function () {
+      let args = arguments;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        callback.apply(this, [args]); 45
+        /*
+        2、改变this的指向，使指向被监听的dom元素,封装的必要性，不改变原有的属性。
+        3、将传入函数的参数(DOM事件对象)传递下去。
+        */
+      }, later);
+    }
+  }
+
+  btn.addEventListener("click", debounce(paymony, 1000))
+</script>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+      结论：
+      当父元素是固定定位，子元素是相对定位
+      那么子元素也会是相对游览器窗口定位的
+    */
+    .father {
+      height: 10000px;
+      width: 100%;
+    }
+
+    .main {
+      position: fixed;
+      height: 500px;
+      width: 500px;
+      background-color: red;
+    }
+
+    .box {
+      position: absolute;
+      top: 100px;
+      left: 100px;
+      height: 200px;
+      width: 200px;
+      background-color: aqua;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="father">
+    <div class="main">
+      <div class="box">hello</div>
+    </div>
+  </div>
+</body>
+
+</html>

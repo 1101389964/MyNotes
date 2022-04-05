@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        margin: 0 auto;
+        width: 200px;
+        height: 200px;
+        background-color: rosybrown;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <script>
+      var div = document.querySelector("div");
+      div.addEventListener("mousemove", function (e) {
+        // console.log(e.pageX, e.pageY);
+        var top = e.pageY - div.offsetTop;
+        var left = e.pageX - div.offsetLeft;
+        div.innerHTML = "距离顶部距离" + top + " " + "距离右侧距离" + left;
+      });
+    </script>
+  </body>
+</html>

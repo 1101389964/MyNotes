@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-on:keyup.en="ent" v-model="message" />
+    </div>
+    <script>
+      Vue.config.keyCodes.en = 65; //65对应的是A
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "",
+        },
+        methods: {
+          ent: function (event) {
+            console.log(event.keyCode); //获取键盘对应的数字
+            console.log(this.message);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

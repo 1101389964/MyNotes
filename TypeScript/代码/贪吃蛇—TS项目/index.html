@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇</title>
+    <link rel="stylesheet" href="./style/index.css">
+</head>
+
+<body>
+    <!-- 游戏的主窗口 -->
+    <div id="main">
+        <!-- 贪吃蛇活动区域 -->
+        <div id="region">
+            <!-- 蛇的整体 -->
+            <div id="snake">
+                <!-- 蛇的每一节 -->
+                <div></div>
+            </div>
+            <div id="food"></div>
+        </div>
+        <!-- 计分版 -->
+        <div id="score-level">
+            <div>
+                SCOPE:<span id="score">0</span>
+            </div>
+            <div>
+                LEVEL:<span id="level">1</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="./dist/index.js" type="module"></script>
+
+</html>

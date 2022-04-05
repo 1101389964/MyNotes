@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      window.addEventListener("load", function () {
+        var but = document.querySelector("button");
+        var input = document.querySelector("input");
+        var s = 3;
+        but.addEventListener("click", function () {
+          this.disabled = true;
+          function time() {
+            if (s > 0) {
+              but.innerHTML = "剩余时间" + s + "秒";
+              s--;
+            } else {
+              s = 3; //把秒杀初始化，为下次做准备
+              but.disabled = false;
+              but.innerHTML = "发送";
+              clearInterval(timer); //清除回调定时器，否则一直循会循环。
+            }
+          }
+          var timer = setInterval(time, 1000);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <span>手机号码</span>
+    <input class="ip" type="number" />
+    <button>发送</button>
+  </body>
+</html>

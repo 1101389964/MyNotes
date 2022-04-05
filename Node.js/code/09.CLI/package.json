@@ -1,0 +1,17 @@
+{
+  "name": "tqa",
+  "version": "1.0.0",
+  "description": "none",
+  "main": "index.js",
+  "bin": {
+    "tqa": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^8.2.0"
+  }
+}

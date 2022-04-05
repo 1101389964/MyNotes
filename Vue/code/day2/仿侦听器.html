@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input v-model="first" v-on:blur='eleveone' value=""></input>
+      <input v-model="second" v-on:blur='eleveone'></input>
+      <div>{{message}}</div>
+    </div>
+    <script>
+        const app=new Vue({
+            el:'#app',
+            data:{
+                first:'',
+                second:"",
+                message:'',
+            },
+            methods:{
+                eleveone:function(e){
+                    // console.log(this.first);
+                    this.message=(this.first+" "+this.second);
+                }
+            }
+        })
+    </script>
+  </body>
+</html>

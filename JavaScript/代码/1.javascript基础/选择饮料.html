@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .none {
+            display: none !important;
+        }
+
+        .now {
+            display: block !important;
+        }
+
+        #main {
+            margin: 20px auto;
+            width: 500px;
+            height: 200px;
+        }
+
+        #main a {
+            color: #ef3a3b;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        #main li:first-child a {
+            color: #444;
+        }
+
+        #main li:nth-child(2) a {
+            color: green;
+        }
+
+        #Cola,
+        #Sprite,
+        #Fanta {
+            display: none;
+            margin: 20px auto;
+            width: 500px;
+        }
+
+
+
+        #Cola a,
+        #Sprite a,
+        #Fanta a {
+            color: #444;
+        }
+
+        #Cola a:nth-child(2),
+        #Sprite a:nth-child(2),
+        #Fanta a:nth-child(2) {
+            padding-left: 100px;
+            color: #ef3a3b;
+        }
+
+        #none {
+            margin: auto;
+            width: 250px;
+        }
+
+        #none a {
+            margin-left: 0;
+            color: #ef3a3b;
+        }
+
+        nav {
+            margin: auto;
+            width: 500px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main" class="now">
+        <h3>请选择你想要的饮料</h3>
+        <ul>
+            <li><a href="javascript:;" class="Cola">可乐</a></li>
+            <li><a href="javascript:;" class="Sprite">雪碧</a></li>
+            <li><a href="javascript:;" class="Fanta">芬达</a></li>
+        </ul>
+    </div>
+    <section id="Cola">
+        <a href="javascript:;" class="no">
+            <ul>
+                <li>可口可乐、</li>
+                <li>百事可乐、</li>
+                <li>非常可乐、</li>
+                <li>天府可乐、</li>
+                <li>蓝剑可乐、</li>
+                <li>银鹭可乐、</li>
+                <li>九星可乐、</li>
+                <li>汾煌可乐、</li>
+                <li>粤冠可乐、</li>
+                <li>健怡可口可乐、</li>
+                <li>幸福可乐</li>
+            </ul>
+        </a>
+        <a href="javascript:;" class="Return">返回上一级</a>
+    </section>
+    <section id="Sprite">
+        <a href="javascript:;" class="no">
+            <ul>
+                <li>柠檬口味</li>
+                <li>冰薄荷口味</li>
+            </ul>
+        </a>
+        <a href="javascript:;" id="return" class="Return">返回上一级</a>
+    </section>
+    <section id="Fanta">
+        <a href="javascript:;" class="no">
+            <ul>
+                <li>
+                    橙味、
+                </li>
+                <li>
+                    青苹果、
+                </li>
+                <li>
+                    葡萄、
+                </li>
+                <li>
+                    蜜桃、
+                </li>
+                <li>
+                    菠萝、
+                </li>
+                <li>
+                    青柠
+                </li>
+            </ul>
+        </a>
+        <a href="javascript:;" class="Return">返回上一级</a>
+    </section>
+    <div id="none" class="none">
+        <h2>非常抱歉该饮料已售空</h2>
+        <a href="javascript:;" class="returnagine">返回上一级</a>
+    </div>
+    <nav class='none'>
+        <h2>天这么冷还是和奶茶吧</h2>
+        <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2495962391,4174723498&fm=26&gp=0.jpg"
+            alt="">
+    </nav>
+</body>
+
+<script>
+    let main = document.querySelector('#main');
+    let classifty = main.querySelectorAll('a');//饮料的种类
+    let section = document.querySelectorAll('section');//每个饮料的具体分类
+    let Return = document.querySelectorAll('.Return');
+    let none = document.querySelector('#none');
+    let no = document.querySelectorAll('.no');//具体的那种味道
+    let retage = document.querySelector('.returnagine');
+    let nav = document.querySelector('nav');
+    let n = 0;
+    for (let i = 0; i < classifty.length; i++) {
+        var falg = 0;
+        classifty[i].setAttribute('index', i);
+        classifty[i].addEventListener('click', function () {
+            falg++;
+            let index = this.getAttribute('index');
+            main.className = 'none';
+            for (let j = 0; j < section.length; j++) {
+                section[j].className = 'none';
+            }
+            section[index].className = 'now';
+            for (let j = 0; j < Return.length; j++) {
+                if (falg >= 3) {
+                    Return[j].innerHTML = '不逗你了 快返回上一级看看';
+                    Return[j].addEventListener('click', function () {
+                        section[index].className = 'none';
+                        nav.className = 'now';
+                        main.className = 'none';
+                    })
+                }
+                else if (falg < 3) {
+                    Return[j].addEventListener('click', function () {
+                        section[index].className = 'none';
+                        main.className = 'now';
+                    })
+                }
+            }
+            for (let k = 0; k < no.length; k++) {
+                no[k].addEventListener('click', function () {
+                    section[index].className = 'none';
+                    none.className = 'now';
+                })
+                if (falg >= 3) {
+                    retage.innerHTML = '这些都没有了 返回首页看看还有啥';
+                }
+                none.addEventListener('click', function () {
+                    for (let t = 0; t < section.length; t++) {
+                        section[t].className = 'none';
+                    }
+                    section[index].className = 'now';
+                    none.className = 'none';
+                })
+            }
+        })
+    }
+</script>
+
+</html>

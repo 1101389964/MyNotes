@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Node(value) {
+        this.value = value;
+        this.next = null;
+    }
+    let head = phead = new Node(1);
+    for (let i = 2; i < 5; i++) {
+        let pNode = new Node(i);
+        phead.next = pNode;
+        phead = pNode;
+    }
+    phead = head;
+    while (phead != null) {
+        console.log(phead.value);
+        phead = phead.next;
+    }
+
+
+</script>
+
+</html>

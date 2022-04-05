@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+</head>
+<style>
+  * {
+    margin: 0;
+  }
+
+  body {
+    position: relative;
+  }
+
+  #one {
+    display: inline-block;
+  }
+
+  #two {
+    display: none;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 200px;
+    width: 200px;
+    height: 200px;
+  }
+
+  #two img {
+    position: absolute;
+    width: 380px;
+    height: 520px;
+  }
+
+  #move {
+    cursor: move;
+    display: none;
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    width: 100px;
+    height: 100px;
+    background-color: royalblue;
+    opacity: 0.3;
+  }
+</style>
+
+<body>
+  <div id="one">
+    <img class="img1" src="../day4/4a15d8883775742e3efbb850ae14def7.png" alt="" />
+    <div id="move"></div>
+  </div>
+  <div id="two">
+    <img class="img2" src="../day4/4a15d8883775742e3efbb850ae14def7.png" alt="" />
+  </div>
+  <script>
+    var one = document.querySelector("img");
+    var two = document.querySelector("#two");
+    var move = document.querySelector("#move");
+    var bigimg = document.querySelector(".img2");
+
+    one.addEventListener("mousemove", function (e) {
+      var x = e.pageX - this.offsetLeft;
+      var y = e.pageY - this.offsetTop;
+      var maskX = e.pageX - move.offsetWidth / 2;
+      var maskY = e.pageY - move.offsetHeight / 2;
+      var XmaskMax = one.offsetWidth - move.offsetWidth;
+      var YmaskMax = one.offsetHeight - move.offsetHeight;
+      if (maskX < 0) {
+        maskX = 0;
+      } else if (maskX > XmaskMax) {
+        maskX = XmaskMax;
+      }
+      if (maskY < 0) {
+        maskY = 0;
+      } else if (maskY > YmaskMax) {
+        maskY = YmaskMax;
+      }
+      move.style.left = maskX + "px";
+      move.style.top = maskY + "px";
+      var bigX = (bigimg.offsetWidth / one.offsetWidth) * maskX;
+      var bigY = (bigimg.offsetHeight / one.offsetHeight) * maskY;
+      bigimg.style.left = -bigX + "px";
+      bigimg.style.top = -bigY + "px";
+    });
+
+    one.addEventListener("mouseover", function () {
+      console.log("over");
+      two.style.display = "block";
+      move.style.display = "block";
+    });
+    //为什么鼠标没离开one还是会触发mouseout事件
+    one.addEventListener("mouseout", function () {
+      console.log("out");
+      two.style.display = "none";
+      move.style.display = "none";
+    });
+  </script>
+</body>
+
+</html>

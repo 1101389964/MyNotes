@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /* var person = function () {
+        console.log(this);
+    }
+    var me = person();//windows
+    var obj = new Object();
+    var he = person.call(obj);//obj */
+    var that;
+    var person = function (height, weight) {
+        that = this;
+        this.height = height;
+        this.weight = weight;
+    }
+    function people(height, weight, name) {
+        person.call(this, height, weight);
+        this.name = name;
+    }
+    var he = new people(180, 120, 'ao');
+    console.log(he);
+</script>
+
+</html>

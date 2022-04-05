@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function Peoson(weight) {
+            this.weight = weight;
+        }
+        var me = new Peoson(120);
+        console.log("实例化对象：", me);//有__proto__对象+
+        console.log("判断实例化对象的__proto__与构造函数的prototype的关系：", Peoson.prototype === me.__proto__);//结果为true
+        /* 实例化__proto__与构造函数prototype是同一个对象 */
+        console.log("__proto__/prototype中construor指向：", me.__proto__.constructor);//constructor指向构造函数
+        console.log("Peoson.prototype.中的__proto__");
+        console.log(Peoson.prototype.__proto__);
+        console.log(Peoson.prototype.__proto__ === Object.prototype);//true
+        console.log(Peoson.prototype.__proto__.__proto__);//null
+        console.log(Object.prototype.prototype);//undefined
+        console.log(Object.prototype);
+        console.log(Peoson.prototype.__proto__.constructor);
+    </script>
+</body>
+
+</html>

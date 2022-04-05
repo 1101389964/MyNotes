@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /* function RepetitionDelete(arr) {
+            var i, j, arry = [];
+            var z, m;
+            for (i = 0; i < arr.length; i++) {
+                for (j = i + 1; j < arr.length; j++) {
+                    for (z = 0; z < arry.length; z++) {
+                        if (arry[z] == arr[j]) {
+                            m = 0;
+                            break;
+                        } else m = 1;
+                    }
+                    if (m == 1)
+                        arry.push(arr[j]);
+                }
+                return arry;
+            }
+        }
+        var arr = [1, 2, 45, 56, 1, 21, 45, 99];
+        console.log(RepetitionDelete(arr)); */
+        function Delete(arr) {
+            var arry = [];
+            for (var i = 0; i < arr.length; i++)
+                if (arry.indexOf(arr[i]) === -1)
+                    arry.push(arr[i]);
+            return (arry);
+        }
+        var arr = [10, 5, 1, 75, 54, 2, 4, 1, 5, 2, 88]
+        alert(Delete(arr));
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

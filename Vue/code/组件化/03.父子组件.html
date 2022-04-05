@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <com2></com2>
+    </div>
+</body>
+<script>
+    //1.创建组件构造器对象
+    const competent1 = Vue.extend({
+        /* 子组件 */
+        template:
+            `<div>
+            <h3>子组件化1</h3>
+            <h3>子组件化2</h3>
+            <h3>子组件化3</h3>
+        </div> `
+    })
+    const competent2 = Vue.extend({
+        /* 父组件 */
+        template:
+            `<div>
+            <h3>父组件1</h3>
+            <h3>父组件2</h3>
+            <h3>父组件3</h3>
+            <com1></com1>
+        </div> `,
+        components: {
+            com1: competent1
+        }
+    })
+    /* 在父组件里面注册的组件只能在父组件里面的作用域使用 */
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+        components: {
+            com2: competent2
+        }
+    })
+</script>
+
+</html>

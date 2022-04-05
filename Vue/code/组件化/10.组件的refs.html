@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <comp ref='lock'>...</comp>
+        <button @click='butClick' ref='but'>点击</button>
+    </div>
+</body>
+
+<template id="cpn">
+    <div>{{num}}</div>
+</template>
+
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+            butClick: function () {
+                console.log(this.$refs.but.innerText);
+                /* 
+                通过refs可以获得dom结点,一个refs可以包含多个ref;
+                一个dom结点定义ref属性，不加s ;
+                this.$refs.but.innerText包含的是dom结点的内容
+                */
+                console.log(this.$refs.lock.num);//获取组件的datat()里面的数据
+                this.$refs.lock.log();//获取组件methods里面的方法
+            }
+        },
+        components: {
+            comp: {
+                template: '#cpn',
+                data() {
+                    return { num: 1 }
+                },
+                methods: {
+                    log() {
+                        console.log('组件的方法');
+                    }
+                }
+            }
+        }
+    })
+</script>
+
+</html>

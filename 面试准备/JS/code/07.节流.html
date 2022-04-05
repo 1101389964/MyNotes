@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      height: 1000px;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div></div>
+</body>
+<script>
+  function randomChangeColour(e) {
+    console.log(e, this);
+    const r = Math.random() * 255 >> 0;
+    const g = Math.random() * 255 >> 0;
+    const b = Math.random() * 255 >> 0;
+    document.body.style.backgroundColor = `rgb(${r},${g},${b})`;
+  }
+
+  //基于定时器
+  function thorttleOne(fun, later) {
+    let timer;
+    return function () {
+      if (timer) return;//当定时器存在不进行任何的操作；
+      timer = setTimeout(() => {
+        fun.apply(this, arguments);
+        timer = null;//定时器执行完毕，将timer的值赋值为null。
+      }, later)
+    }
+  }
+
+  //基于Date，获取两个时间戳与later比较
+  function thorttleTwo(fun, later) {
+    let before = 0;
+    return function () {
+      const now = new Date();
+      if (now - before >= later) {
+        fun.apply(this, arguments)
+        before = now;
+      }
+    }
+  }
+
+  document.addEventListener("scroll", thorttleTwo(randomChangeColour, 1000))
+
+</script>
+
+
+</html>

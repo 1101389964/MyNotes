@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <Mycomp></Mycomp>
+        <mycomp></mycomp>
+    </div>
+</body>
+<script>
+    const comp = Vue.extend({
+        template:
+            `<div>
+            <h3>组件化调试1</h3>
+            <h3>组件化调试2</h3>
+            <h3>组件化调试3</h3>
+        </div> `
+    })
+
+    Vue.component('Mycomp', comp)
+    /* 这样定义的组件属于全局组件，当再创建一个新的vue实例对象时也可以去使用这个组件 */
+
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+        /* 
+        components属性，可以创建多个局部组件，
+        第一个mycomp是创键组件的名字，
+        第二个comp是调用组件对象
+         */
+        components: {
+            mycomp: comp
+        }
+    })
+</script>
+
+</html>

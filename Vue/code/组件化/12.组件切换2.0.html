@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a href="" @click.prevent="change1">登录</a>
+        <a href="" @click.prevent="change2">注册</a>
+        <!-- Vue提供了component，用来展示对应名称的组件 -->
+        <!-- component是一个占位符，:is属性，可以用来展示组件的名称 -->
+        <!-- 该切换组件的方法相比上一个方法的好处是可以切换多个 -->
+        <component v-bind:is='comName'></component>
+    </div>
+</body>
+
+<template id="tmp1">
+    <div>
+        <h2>登录组件</h2>
+    </div>
+</template>
+
+<template id="tmp2">
+    <div>
+        <h2>注册组件</h2>
+    </div>
+</template>
+
+<script>
+    Vue.component('login', {
+        template: '#tmp1'
+    })
+    Vue.component('register', {
+        template: '#tmp2'
+    })
+
+    const app = new Vue({
+        el: '#app',
+        data: {
+            comName: 'login'
+        },
+        methods: {
+            change1: function () {
+                this.comName = 'login'
+            },
+            change2: function () {
+                this.comName = 'register'
+            }
+        }
+    })
+</script>
+
+</html>

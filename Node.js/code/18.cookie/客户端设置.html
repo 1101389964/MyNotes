@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id='btn'>添加cookie</button>
+</body>
+<script>
+  const btn = document.querySelector('#btn');
+  btn.addEventListener('click', () => {
+    console.log('已点击');
+    //在控制栏值的Application中可以看到cookie
+    // document.cookie = "account = 1101389964";//属于内存cookie，游览器关闭cookie就不存在了
+    document.cookie = "account = 1101389964;max-age = 60";//这是生命周期，为60秒，直到60秒后cookie才会移除
+  })
+</script>
+
+</html>

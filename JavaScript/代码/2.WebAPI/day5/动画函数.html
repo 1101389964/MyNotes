@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+      }
+      div {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        background-color: salmon;
+      }
+    </style>
+  </head>
+  <body>
+    <div></div>
+    <button class="button800">到800</button>
+    <button class="button1000">到1000</button>
+
+    <script>
+      var button800 = document.querySelector(".button800");
+      var button1000 = document.querySelector(".button1000");
+      var div = document.querySelector("div");
+      var Lelt8 = 800;
+      var Lelt10 = 1000;
+      function animate(obj, target, callback) {
+        clearInterval(obj.time);
+        obj.time = setInterval(function () {
+          var step = (target - obj.offsetLeft) / 10;
+          step = step > 0 ? Math.ceil(step) : Math.floor(step);
+          obj.style.left = obj.offsetLeft + step + "px";
+          if (obj.offsetLeft == target) {
+            clearInterval(obj.time);
+            if (callback) callback();
+          }
+        }, 10);
+      }
+      button800.addEventListener("click", function () {
+        animate(div, Lelt8, function () {
+          div.style.backgroundColor = "#ccc";
+        });
+      });
+      button1000.addEventListener("click", function () {
+        animate(div, Lelt10);
+      });
+    </script>
+  </body>
+</html>

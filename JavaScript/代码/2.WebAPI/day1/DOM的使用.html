@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="thing">明天体侧</p>
+    <p id="time">当前时间</p>
+    <button id="but">NIKE</button>
+    <button id="timebutton">点击显示时间</button>
+    <script>
+      var thing = document.getElementById("thing");
+      var time = document.getElementById("time");
+      //var time=document.getElementsByClassName('time'); 仅支持HTML5的游览器才支持这个写法
+      console.log(thing);
+      console.log(typeof thing); //查看thing的类型
+      console.dir(thing); //console.dir返回的是元素对象 可以查看里面的属性和方法
+      var but = document.getElementById("but"); //事件原
+      var timebutton = document.getElementById("timebutton");
+      but.onclick = function () {
+        alert("JUST DO IT !");
+      }; //事件类型->onclick，事件处理程序的方式->function();
+
+      but.onclick = function () {
+        thing.innerText = "今天已经完成体侧了！";
+      }; //也符合层叠性,上面一个but.onclick=function()的作用就会被层叠掉
+
+      timebutton.onclick = function () {
+        time.innerText = GetTime();
+      };
+
+      function GetTime() {
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var dates = date.getDate(); //几号
+        var day = date.getDay(); //星期几
+        var house =
+          date.getHours() < 10 ? "0" + date.getHours() : date.getHours();
+        var minute =
+          date.getMinutes() < 10 ? "0" + date.getMinutes() : date.getMinutes();
+        var second =
+          date.getSeconds() < 10 ? "0" + date.getSeconds() : date.getSeconds();
+        var arr = [
+          "星期日",
+          "星期一",
+          "星期二",
+          "星期三",
+          "星期四",
+          "星期五",
+          "星期六",
+        ];
+        return (
+          year +
+          "年" +
+          month +
+          "月" +
+          dates +
+          "日 " +
+          arr[day] +
+          " " +
+          house +
+          ":" +
+          minute +
+          ":" +
+          second
+        );
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //查找o出现的位置及次数
+        var b = 'abcodefoxsadsoef';
+        var n = b.indexOf("o");
+        var arr = [n];
+        var i = 1;
+        while (b.indexOf('o', n + 1) != -1) {
+            n = b.indexOf('o', n + 1);
+            i++;
+            arr[i - 1] = n;
+        }
+        console.log('o出现的次数为' + i + " " + "位置为" + arr);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+</head>
+
+<body>
+  <h2>axios的基本使用</h2>
+  <button>发送get请求</button>
+  <button>发送post请求</button>
+  <button>发送put请求</button>
+  <button>发送delete请求</button>
+</body>
+
+<script>
+  const btn = document.querySelectorAll("button");
+
+  //get请求获取到对应的信息
+  btn[0].addEventListener('click',
+    async () => {
+      const p1 = await axios({
+        //请求类型
+        method: 'GET',
+        //url
+        url: "http://localhost:3000/posts/1",//
+        //参数
+        params: {
+          id: 100
+        }
+      })
+      console.log(p1);
+    })
+
+  //post请求增加数据
+  btn[1].addEventListener('click', () => {
+    axios({
+      //请求类型
+      method: 'POST',
+      //url
+      url: "http://localhost:3000/posts",//不需要id
+      //请求体
+      data: {
+        title: "test",
+        author: "aozige"
+      }
+    }).then(response => {
+      console.log(response);
+    })
+  })
+
+  //put请求会更改对应信息
+  btn[2].addEventListener('click', () => {
+    axios({
+      //请求类型
+      method: 'PUT',
+      //url
+      url: "http://localhost:3000/posts/1",//需要id
+      //请求体
+      data: {
+        title: "put",
+        author: "更改信息"
+      }
+    }).then(response => {
+      console.log(response);
+    })
+  })
+
+  //delete请求
+  btn[3].addEventListener('click', () => {
+    axios({
+      //请求类型
+      method: 'DELETE',
+      //url
+      url: "http://localhost:3000/posts/3",//需要id
+      //删除不需要设置请求体
+    }).then(response => {
+      console.log(response);
+    })
+  })
+</script>
+
+</html>

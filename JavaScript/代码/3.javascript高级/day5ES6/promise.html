@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    // 用setTimeout代替网络请求，没有使用Promise
+    setTimeout(() => {
+        console.log("第一次网络请求");
+        setTimeout(() => {
+            console.log("第二次网络请求");
+            setTimeout(() => {
+                console.log("第三次网络请求");
+            }, 1000)
+        }, 1000)
+    }, 1000)
+
+    /* 
+    Promise的参数是一个函数,函数本身也包含两个参数resolve, reject 
+    resolve, reject也是两个函数；resolve会执行then后面的函数
+    */
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve()
+        }, 1000)
+    }).then(() => {
+        console.log("第一次网络请求");
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve();
+            }, 1000)
+        })
+    }).then(() => {
+        console.log("第二次网络请求");
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve()
+            }, 1000)
+        })
+    }).then(() => {
+        console.log("第三次网络请求");
+    });
+
+    // resolve的参数可以传递到then里面
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("第一次网络请求")
+        }, 1000)
+    }).then((agrs) => {
+        console.log(agrs);
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("第二次网络请求");
+            }, 1000)
+        })
+    }).then((args) => {
+        console.log(args);
+        return new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("第三次网络请求")
+            }, 1000)
+        })
+    }).then((args) => {
+        console.log(args);
+    });
+
+    new Promise((resolve, reject) => {
+        // reject捕获网络请求失败的信息，然后传递给catch
+        setTimeout(() => {
+            reject("error message")
+        }, 1000)
+    }).then((agrs) => {
+        console.log(agrs);
+    }).catch((args) => {
+        console.log(args);
+    })
+
+    /* Promise简写 */
+    new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve("第一次网络请求")
+        }, 1000)
+    }).then((agrs) => {
+        console.log(agrs);
+        /* return new Promise((resolve, reject) => {
+                resolve("第二次网络请求");
+            }
+        ) */
+        //上面的代码可以简写为下面的，reject也可以这样的简写
+        return Promise.resolve("第二次网络请求");
+    }).then((args) => {
+        console.log(args);
+        return Promise.resolve("第三次网络请求");
+    }).then((args) => {
+        console.log(args);
+    });
+</script>
+
+</html>

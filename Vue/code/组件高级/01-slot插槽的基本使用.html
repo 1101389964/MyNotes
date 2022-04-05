@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <myslotone></myslotone>
+        <p>-------------------</p>
+        <myslotone>
+            <div>
+                代替原来的div标签
+            </div>
+        </myslotone>
+        <p>-------------------</p>
+        <myslottwo>
+            <div>插入div标签</div>
+        </myslottwo>
+        <p>-------------------</p>
+        <myslottwo>
+            <div>插入div标签</div>
+            <a href="">插入标签</a>
+            <span>插入span标签</span>
+        </myslottwo>
+    </div>
+</body>
+<template id="one">
+    <div>
+        <h3>slot的使用:slot里面有内容</h3>
+        <slot>
+            <div>默认的div标签</div>
+        </slot>
+    </div>
+</template>
+<template id="two">
+    <div>
+        <h3>slot的使用:slot里面无内容</h3>
+        <slot>
+            <div></div>
+        </slot>
+    </div>
+</template>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+        components: {
+            myslotone: {
+                template: '#one'
+            },
+            myslottwo: {
+                template: '#two'
+            }
+        }
+    })
+</script>
+
+</html>

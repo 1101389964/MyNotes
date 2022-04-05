@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="message" />
+      <span v-text="check"></span>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "",
+          check: "",
+        },
+        methods: {
+          jiancha: function (name) {
+            if (name == "TQA") this.check = "该用户名已被注册请跟换用户名";
+            else this.check = "允许注册";
+          },
+        },
+        watch: {
+          //侦听器必须要侦听data里面的数据，不是被直接调用函数
+          message: function (val) {
+            this.jiancha(val);
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

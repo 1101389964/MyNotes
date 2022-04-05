@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <Mycomp></Mycomp>
+    </div>
+</body>
+<!-- 组件里面的数据是存放在组件自己的data里面的，在vue实例data里面定义title是没有用的 -->
+<template id='comp'>
+    <div>
+        <h3>{{classify}}</h3>
+        <h3>组件化调试2</h3>
+        <h3>组件化调试3</h3>
+    </div>
+</template>
+<script>
+    Vue.component('Mycomp', {
+        template: '#comp',
+        data() {
+            return { classify: '组件的数据' }
+        }
+    })
+
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <Mycomp></Mycomp>
+    </div>
+</body>
+<script>
+    //1.创建组件构造器对象
+    const competent = Vue.extend({
+        /* template是模块的意思 */
+        template:
+            `<div>
+            <h3>组件化调试1</h3>
+            <h3>组件化调试2</h3>
+            <h3>组件化调试3</h3>
+        </div> `
+    })
+    //2.注册组件
+    //component有两个参数，第一个参数是定义组件的名字，后面一个参数是组件构造器
+    Vue.component('Mycomp', competent)
+
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        }
+    })
+</script>
+
+</html>

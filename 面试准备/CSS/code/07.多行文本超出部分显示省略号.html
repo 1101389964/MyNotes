@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .textBox {
+      position: relative;
+      padding-right: 1rem;
+      overflow: hidden;
+      height: 145px;
+      width: 400px;
+      background-color: aquamarine;
+    }
+
+    /* 先使用一个伪元素固定定位显示... */
+    .textBox::before {
+      position: absolute;
+      content: "....";
+      right: 0;
+      bottom: 0;
+    }
+
+    /* 再用一个颜色与父元素相同伪元素在文字没超过盒子时覆盖掉... */
+    .textBox::after {
+      position: absolute;
+      margin-top: 0.5rem;
+      right: 0;
+      content: "";
+      height: 1rem;
+      width: 1rem;
+      background-color: aquamarine;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="textBox">
+    这是她自己获得的首个冬奥会奖牌！这也是中国运动员第一次参加冬奥会大跳台的比赛！
+    不过，这里有件事大家可能不知道：今天拿了冠军的谷爱凌，昨夜还在怼美媒！
+    事情是这样的：北京时间2月7日晚，美国媒体“Insider”在社交媒体平台Instagram上，
+    发布了一张中国花样滑冰女运动员朱易泪洒北京冬奥会赛场的照片，并配上了这样的一段文字：
+    “在冬奥赛场摔倒后，放弃美籍而代表中国参赛的朱易正遭受着来自中国社交媒体用户的攻击。”
+  </div>
+</body>
+
+</html>

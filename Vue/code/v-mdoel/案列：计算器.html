@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model='left'>
+        <select v-model='opterator'>
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value="/">/</option>
+        </select>
+        <input type="text" name="" id="" v-model='right'>
+        <input type="button" value="=" @click='result'>
+        <input type="text" :value='message'>
+    </div>
+</body>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            el: '#app',
+            left: '',
+            right: '',
+            message: '',
+            opterator: ''
+        },
+        methods: {
+            result: function () {
+                this.message = eval(Number(this.left) + this.opterator + Number(this.right));
+                //把字符串解析直接执行并返回，具体：JS高级字符串
+
+            }
+        }
+    })
+</script>
+
+</html>

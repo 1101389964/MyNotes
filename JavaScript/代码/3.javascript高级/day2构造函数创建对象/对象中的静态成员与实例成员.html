@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function Peoson(name, age) {
+        this.name = name;
+        this.age = age;
+        this.active = function (agms) {
+            console.log(agms);
+        }
+    }
+    Peoson.heigh = '172';
+    var people = new Peoson('澳子哥', 20);
+    console.log(people.name + people.age);
+    people.active(['拍照', '美食']);//实例化成员只能通过实例化对象来访问
+    console.log(people.heigh);//结果为undefined，Peoson.heigh，只能通过构造函数来访问
+    console.log(Peoson.heigh);//172
+</script>
+
+</html>

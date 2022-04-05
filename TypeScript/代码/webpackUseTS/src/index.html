@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模板</title>
+</head>
+
+<body>
+    <div></div>
+</body>
+<style>
+    div {
+        width: 1000px;
+        height: 500px;
+        background: -webkit-linear-gradient(top, red, #fff);
+    }
+</style>
+<script>
+    function deepClone(target) {
+        // 定义一个变量
+        let result;
+        // 如果当前需要深拷贝的是一个对象的话
+        if (typeof target === 'object') {
+            // 如果是一个数组的话
+            if (Array.isArray(target)) {
+                result = []; // 将result赋值为一个数组，并且执行遍历
+                for (let i in target) {
+                    // 递归克隆数组中的每一项
+                    result.push(deepClone(target[i]))
+                }
+                // 判断如果当前的值是null的话；直接赋值为null
+            } else if (target === null) {
+                result = null;
+                // 判断如果当前的值是一个RegExp对象的话，直接赋值    
+            } else if (target.constructor === RegExp) {
+                result = target;
+            } else {
+                // 否则是普通对象，直接for in循环，递归赋值对象的所有值
+                result = {};
+                for (let i in target) {
+                    result[i] = deepClone(target[i]);
+
+                }
+            }
+            // 如果不是对象的话，就是基本数据类型，那么直接赋值
+        } else {
+            result = target;
+        }
+        // 返回最终结果
+        return result;
+    }
+    let obj1 = {
+        name: '悟空',
+        hobbys: ['香蕉', "金箍棒"],
+        family: {
+            friends: ['唐僧', "猪八戒", "沙和尚"],
+            kinsfolk: ["猴崽子"],
+        }
+    }
+    let obj2 = deepClone(obj1);
+    let arry = [1, 2, 3];
+    /* for (let i in arry) {
+        console.log(i);
+        console.log(arry[i]);
+    } */
+    for (let i in obj1) {
+        console.log(i);
+        console.log(obj1[i] === obj1.name);
+        console.log(obj1[i]);
+    }
+    //console.log(obj1[hobbys]);
+    //console.log(obj1[name]);
+    /* console.log(typeof arry);
+    console.log(obj2); */
+</script>
+
+</html>

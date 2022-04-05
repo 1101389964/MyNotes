@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      width: 200px;
+      height: 100px;
+      border: 1px solid red;
+    }
+  </style>
+</head>
+
+<body>
+  <button>发送请求</button>
+</body>
+
+<script>
+  const btn = document.querySelector("button");
+  //发送请求
+  let XHR = null;
+  let isSending = false;//标识正在发送请求
+  btn.addEventListener("click", () => {
+    if (isSending) XHR.abort();//如果以发送，则取消该请求
+    XHR = new XMLHttpRequest();
+    isSending = true;
+    XHR.open("GET", "http://127.0.0.1:8000/later");
+    XHR.send();
+    XHR.onreadystatechange = () => {
+      if (XHR.readyState === 4) {
+        //当完成所有结果的返回则修改发送状态为false
+        isSending = false;
+      }
+    }
+  })
+</script>
+
+</html>

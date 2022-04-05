@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var arr = [12, 23, 43, 54, 23, 566, 21, 4];
+      /* arr.forEach(function (value, index, array) {
+        console.log(value); //数组的值
+        console.log(index); //数组的索引
+        console.log(array); //数组本身
+      }); */
+      /* var arry = arr.filter(function (value, index, array) {
+        return index % 2 === 0; //返回数组的条件
+      }); //返回的是满足条件的数组*/
+      var arry = arr.some(function (value, index, array) {
+        return value == 4;
+      }); //返回的是布尔值，只要查找到满足条件的一个元素就立马终止循环；
+      console.log(arry);
+    </script>
+  </body>
+</html>

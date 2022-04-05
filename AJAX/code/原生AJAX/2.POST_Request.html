@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX GET 请求</title>
+  <style>
+    button {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <textarea></textarea>
+  </div>
+</body>
+<script>
+  let inner = document.querySelector("textarea");
+  inner.addEventListener("mouseover", () => {
+    //创建对象
+    let XHR = new XMLHttpRequest();
+    //初始化URL
+    XHR.open("POST", "http://127.0.0.1:8000/server");
+    //设置请求头信息
+    XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    //Content是设置请求体类型的，必须放在参数前面 
+
+
+    //发送
+    XHR.send("a=100&b=200&c=300");//参数
+    //事件绑定
+    XHR.onreadystatechange = () => {
+      if (XHR.readyState === 4) {
+        if (XHR.status >= 200 && XHR.status < 300) {
+          inner.innerHTML = XHR.response;
+        }
+      }
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+</head>
+
+<body>
+  <button>GET</button>
+  <button>POST</button>
+  <button>axios方法发送请求</button>
+</body>
+<script>
+  const btn = document.querySelectorAll("button");
+  //get请求
+  btn[0].addEventListener("click", () => {
+    axios.get("http://127.0.0.1:8000/axios-server", {
+      //url参数
+      params: {
+        id: 100,
+        number: 520
+      },
+      //请求头信息
+      headers: {
+        name: 'zige',
+        age: 21
+      }
+    }).then(value => { console.log(value); })
+  })
+
+  //post请求
+  btn[1].addEventListener("click", () => {
+    axios.post("http://127.0.0.1:8000/axios-server",
+      {
+        //请求体 
+        username: 'admin',
+        password: "1234"
+      },
+      {
+        //请求行url
+        params: {
+          id: 200,
+        },
+        //请求头
+        headers: {
+          name: "hhh",
+          year: 12
+        }
+      })
+  })
+
+  btn[2].addEventListener("click", () => {
+    axios({
+      //请求类型
+      methods: "POST",
+      //url
+      url: "http://127.0.0.1:8000/axios-server",
+      //请求头
+      headers: {
+        name: "te",
+        year: 66
+      },
+      //参数
+      params: {
+        id: 500,
+      },
+      //请求体
+      data: {
+        username: 'mmmm',
+        password: 'aaaa'
+      }
+    }).then(value => {
+      console.log(value);
+    })
+  })
+</script>
+
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <label v-for="item in originHobbies">
+            <input type="radio" :value='item' name="hobby">{{item}}
+        </label>
+    </div>
+</body>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            originHobbies: ['篮球', '足球', '羽毛球', '乒乓球'],
+        },
+        methods: {
+
+        }
+    })
+</script>
+
+</html>

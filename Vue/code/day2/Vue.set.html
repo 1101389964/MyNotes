@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="message" />
+      <ul>
+        <li :key="index" v-for="(item,index) in lis">{{item}}</li>
+      </ul>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "",
+          lis: ["one", "two", "three"],
+        },
+        methods: {},
+      });
+      /* app.lis[1] = "zero";  //在控制台中可以看到lis里面的two已经变成zeor了但是页面没有显示，因为这不是响应式的*/
+      Vue.set(app.lis, 1, "zero"); //这两者都是响应式的
+      app.$set(app.lis, 2, "four");
+    </script>
+  </body>
+</html>

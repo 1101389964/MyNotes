@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var arr = [1, 25, 45, 36, 54, 99];
+    function star(height, weight) {
+        console.log(this);
+        console.log(height + weight);
+    }
+    var obj = new Object;
+    star.apply(obj, [180, 120]);//this指向obj，数组传递的是number，则传到函数以number的形式
+    console.log("``````````````````````````");
+    var newstar = star.apply(star, ["180", "120"]);//this指向star，数组传递的是string，则传到函数以string的形式
+    console.log("``````````````````````````");//180120
+    var max = Math.max.apply(Math, arr);
+    //数组没有求最大值的方法，可以间接使用Math.max的数学方法,apply以数组的形式传递arr，然后转换为数字
+    console.log(max);//99
+</script>
+
+</html>

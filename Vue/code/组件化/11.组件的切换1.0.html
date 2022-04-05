@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <a href="javascript:;" @click="change">登录</a>
+        <a href="javascript:;" @click="change">注册</a>
+        <!-- 由于falg不是true就是false，所以该方法只限定两个组件的切换 -->
+        <login v-if="flag"></login>
+        <register v-else></register>
+    </div>
+</body>
+
+<template id="tmp1">
+    <div>
+        <h2>登录组件</h2>
+    </div>
+</template>
+
+<template id="tmp2">
+    <div>
+        <h2>注册组件</h2>
+    </div>
+</template>
+
+<script>
+    Vue.component('login', {
+        template: '#tmp1'
+    })
+    Vue.component('register', {
+        template: '#tmp2'
+    })
+    var num = 1;
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+            flag: true
+        },
+        methods: {
+            change: function () {
+                this.flag = !this.flag;
+                console.log(this.flag);
+            }
+        }
+    });
+</script>
+
+</html>

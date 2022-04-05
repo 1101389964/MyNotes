@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <mycom></mycom>
+        <mycom></mycom>
+        <mycom></mycom>
+    </div>
+    <template id="tmp">
+        <div>
+            <input type="button" value="自增" v-on:click='increment'>
+            <span>{{count}}</span>
+        </div>
+    </template>
+    <script>
+        var obj = {
+            count: 0
+        }
+        Vue.component('mycom', {
+            template: '#tmp',
+            data() {
+                return obj;//div定义了三个组件，但这三个组件返回的对象都指向obj，由于obj只有一个，只要改变其他两个跟着一起变
+                /*  {
+                    count: 0
+                    //直接返回定义的对象，不会造成三个组件一起变化的现象，因为三个组件的count是单独的
+                } */
+            },
+            methods: {
+                increment() {
+                    this.count++;
+                }
+            }
+        })
+        var app = new Vue({
+            el: '#app',
+            data: {
+
+            },
+            methods: {
+
+            }
+        })
+    </script>
+</body>
+
+</html>

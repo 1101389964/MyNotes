@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var Node = {
+            val: "",
+            next: "",
+
+            node: function (val, next) {
+                this.val = val;
+                this.next = next;
+            },
+
+            print: function () {
+                console.log(this.val + this.next.print());
+            }
+
+        }
+
+        var node = new Node.node(1, null);
+        console.log(node);
+
+        /* function node() {
+            console.log(this);
+            this.color = color;
+            this.getColor = function () {
+                console.log(this);
+                return this.color;
+            };
+            this.setColor = function (color) {
+                console.log(this);
+                this.color = color;
+            };
+
+        }
+        node(); */
+        /* function Node(element) {
+            this.element = element;
+            this.next = null;
+        }
+        function List() {
+            this.head = new Node("head");
+
+        }
+        function Find(item) {
+            var currentNode = this.head;
+            while (currentNode != null && currentNode.element != item) {
+                currentNode = currentNode.next;
+            }
+            return currentNode;
+        }
+        function inster(newElement, item) {
+            var newNode =
+        } */
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <p id="time"></p>
+    <script>
+      var time = document.getElementById("time");
+      function GetTime() {
+        var date = new Date();
+        return date.getHours();
+      }
+      if (GetTime() < 11) time.innerHTML = "上午好";
+      else if (GetTime() < 13) time.innerHTML = "中午好";
+      else if (GetTime() < 18) time.innerHTML = "下午好";
+      else time.innerHTML = "晚上好";
+    </script>
+  </body>
+</html>

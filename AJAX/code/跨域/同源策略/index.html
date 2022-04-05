@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button>发送请求</button>
+</body>
+<script>
+  const btn = document.querySelector("button");
+  let XHR = null;
+  window.addEventListener("click", () => {
+    XHR = new XMLHttpRequest();
+    XHR.open("get", "http://127.0.0.1:9000/home");
+    XHR.send();//参数
+    //事件绑定
+    XHR.onreadystatechange = () => {
+      if (XHR.readyState === 4) {
+        if (XHR.status >= 200 && XHR.status < 300) {
+          console.log(XHR.response);
+        }
+      }
+    }
+  })
+
+  btn.addEventListener("click", () => {
+    const x = new XMLHttpRequest();
+    x.open("get", "/body");
+    x.send();//参数
+    //事件绑定
+    x.onreadystatechange = () => {
+      if (x.readyState === 4) {
+        if (x.status >= 200 && x.status < 300) {
+          console.log(x.response);
+        }
+      }
+    }
+  })
+</script>
+
+</html>

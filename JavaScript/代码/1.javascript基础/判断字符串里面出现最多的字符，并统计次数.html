@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function statistic(a) {
+            var b = {};
+            for (var i = 1; i < a.length; i++) {
+                var char = a.charAt(i); //将一个字符赋值给char。
+                if (b[char]) { //如果对象里面存在变量b[char],则将b[char]的值加一
+                    b[char] += 1;
+                } else {
+                    b[char] = 1; //如果对象里面不存在变量b[char],则构建一个对象变量b[char]，并使其为1；
+                }
+            }
+            return b; //以对象的方式返回字符及其次数。
+        }
+        var a = "abdasseidjiwqosjdiofrjqssad";
+        var obj = statistic(a);
+        console.log(obj);
+        var ch = '';
+        var max = 0;
+        for (var k in obj) {
+            if (obj[k] > max) {
+                max = obj[k];
+                ch = k;
+            }
+        }
+        console.log(ch + ' ' + max);
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

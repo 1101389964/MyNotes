@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      div {
+        position: relative;
+        width: 400px;
+        border-bottom: 1px solid #ccc;
+        margin: 100px auto;
+      }
+      div input {
+        width: 370px;
+        height: 30px;
+        outline: none;
+        border: none;
+      }
+      div label {
+        position: absolute;
+        right: 0;
+        top: 3px;
+        color: #ccc;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input id="input" type="password" />
+      <label id="eye">></label>
+    </div>
+    <script>
+      var input = document.getElementById("input");
+      var eye = document.getElementById("eye");
+      var flag = 0;
+      eye.onclick = function () {
+        if (flag == 0) {
+          input.type = "text";
+          eye.innerHTML = "<";
+          flag = 1;
+        } else {
+          input.type = "password";
+          eye.innerHTML = ">";
+          flag = 0;
+        }
+      };
+    </script>
+  </body>
+</html>

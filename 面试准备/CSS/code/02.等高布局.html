@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 
+      父盒子高度不给定，通过子盒子的高度来撑开父盒子的高度
+      每个子盒子都设padding-bottom: 9999px;margin-bottom: -9999px;
+      这样每个子盒子外边距距离底边的高度还是原来的高度，即父盒子也是原来的高度
+      唯一的区别就是每个子盒子的背景延伸为9999px(9999px足够用了)，
+      消除父盒子外边的多余部分即可实现子盒子显示的高度相同。
+    */
+    .Article {
+      overflow: hidden;
+    }
+
+    .Article>li {
+      float: left;
+      padding-bottom: 9999px;
+      margin: 0 10px -9999px 0;
+      list-style: none;
+      width: 200px;
+      background: #4577dc;
+      color: #fff;
+    }
+
+    .Article>li>p {
+      padding: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <ul class="Article">
+    <li>
+      <p>
+        一家将客户利益置于首位的经纪商，
+        为客户提供专业的交易工具一家将客户利益置于首位的经纪商，
+        为客户提供专业的交易工具一家将客户利益置于首位的经纪商，
+        为客户提供专业的交易工具一家将客户利益置于首位的经纪商，为客户提供专业的交易工具
+      </p>
+    </li>
+    <li>
+      <p>一家将客户利益置于首位的经纪商，为客户提供专业的交易工具
+        一家将客户利益置于首位的经纪商，为客户提供专业的交易工具</p>
+    </li>
+    <li>
+      <p>一家将客户利益置于首位的经纪商</p>
+    </li>
+  </ul>
+</body>
+
+</html>

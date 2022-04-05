@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <input type="button" name="" id="" value="不拿" @click='no'>
+        <input type="button" name="" id="" value="拿" @click='stop'>
+        <h3>{{ msg }}</h3>
+    </div>
+</body>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data: {
+            msg: '法师来拿蓝！',
+            Id: null  //用于保存定时器，清空定时器是需要；
+        },
+        methods: {
+            no: function () {
+                if (this.Id == null) { //首先判断Id是否为null，否则当点击多次定时器会触发多次
+                    that = this;
+                    this.Id = setInterval(function () {
+                        console.log(that.msg);
+                        /* 获取第一个字符 */
+                        var start = that.msg.substring(0, 1);
+                        /* 获取第一个后面的字符 */
+                        var end = that.msg.substring(1);
+                        /* 重新拼接字符 */
+                        that.msg = end + start;
+                    }, 400)
+                }
+            },
+            stop() {
+                clearInterval(this.Id);//由于定时器在no函数中，不能被直接访问到，所有在data中提前设置Id保存定时器，
+                this.Id = null;//需要把Id修改为null否则定时器无法开启
+            }
+        }
+    })
+</script>
+
+</html>

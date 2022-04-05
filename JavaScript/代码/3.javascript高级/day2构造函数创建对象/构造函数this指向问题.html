@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      function Father(whight, heihgt) {
+        this.whight = whight;
+        this.heihgt = heihgt;
+        console.log(this.heihgt);
+        console.log(this.whight);
+        console.log(this);
+      }
+      var arry = Father(900, 80); //不能改变this的指向
+      var e = 90;
+      Father.call(e, 900, 80); //call可以改变函数this的指向，使this指向e，后面两个是函数的实参；
+    </script>
+  </body>
+</html>

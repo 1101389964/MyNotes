@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script src="../vue.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-model="submit" v-on:keyup.enter="enter" v-on:keyup.delete="del" />
+    <!-- keyup.enter,是回车键的意思 -->
+    <!-- keyup.delete,是退格键的意思 -->
+    <button v-text="buont" v-on:click="enter"></button>
+  </div>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        buont: "提交",
+        submit: "",
+      },
+      methods: {
+        enter: function () {
+          console.log(this.submit); 0
+        },
+        del: function () {
+          this.submit = "";
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>

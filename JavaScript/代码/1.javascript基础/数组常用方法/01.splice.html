@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var ArrOne = new Array("语文", "数学", "英语", "物理");    //new 关键字创建数组
+        var ArrTwo = ["yuwen", "shuxue", "yingyu", "wuli"];     //普通创建
+        //1.删除splice方法有两个参数且第二个参数的不为0，则从第一个参数所指定位置开始删除第二个参数所指定个数的元素，并返回删除的元素；返回结果为数组，内容"语文"；
+        console.log(ArrOne.splice(0, 1));//删除并返回['语文']
+        console.log(ArrOne);//["数学", "英语", "物理"]
+        console.log(ArrOne.splice(2, 1));//删除并返回['物理']
+        console.log(ArrOne);//["数学", "英语"]
+        console.log("``````````````````````````");
+        //2.替换.splice方法有三个参数且第二个参数的不为0，则从第一个参数位置开始替换掉第二个参数所指定元素个数的值，并返回替换的元素；返回结果为数组，内容"yuwen"；
+        console.log(ArrTwo.splice(0, 1, "语文"));//['yuwen']
+        console.log(ArrTwo);//["语文","shuxue", "yingyu", "wuli"]
+        console.log(ArrTwo.splice(1, 2, "数学", "英语"));//["shuxue", "yingyu"]
+        console.log(ArrTwo);//["语文", "数学", "英语", "wuli"]
+        console.log("``````````````````````````");
+        //3.添加.splice方法有三个参数且第二个参数为0，则从第一个参数位置开始添加第二个位置后面的内容；没有返回值
+        console.log(ArrOne.splice(1, 0, "语文"));//没有内容
+        console.log(ArrOne);//["数学", "语文", "英语"]
+        ArrOne.splice(3, 0, "物理");
+        console.log(ArrOne);//["数学", "语文", "英语", "物理"]
+        console.log("``````````````````````````");
+    </script>
+</body>
+
+</html>

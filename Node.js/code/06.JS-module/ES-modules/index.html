@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<!-- 
+  1.index.js文件中模块化引入了module.js中的导出数据，
+  所以必须把 type="module" 放到 <script> 标签中, 来声明这个脚本是一个模块 
+  2.当使用type='module'时不能直接打开html本地文件来引入js文件否则会报错
+  Access to script at 'file:///D:/Web_Developer/Node.js/code/06.JS-module/ES-modules/index.js' from origin 'null' has been blocked by CORS policy: 
+  Cross origin requests are only supported for protocol schemes: http, data, chrome, chrome-extension, chrome-untrusted, https.
+  意思是只接受http, data, chrome, chrome-extension, chrome-untrusted, https的协议，不接受file协议
+  3.可以安装插件开启本地服务来解决此问题
+  4.使用了type="module"是异步执行该js文件的，如果有其他非模块化js文件则会先执行。
+-->
+<script src="./index.js" type="module"></script>
+
+<body>
+
+</body>
+
+</html>

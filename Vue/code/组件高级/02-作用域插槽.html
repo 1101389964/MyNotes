@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <tqa>
+            <template slot-scope='slot'>
+                <!-- slot-scope是固定格式，后面的slot是自己的命名，slot就引用了插条对象 -->
+                <span v-for='item in slot.data'>{{item}}-</span>
+                <!-- 然后通过v-for来遍历组件里面定义的data属性里面的数据 -->
+                <br>
+                <span>{{slot.data.join('-')}}</span>
+                <!-- join('-')把数组转换成字符串，并且中间以自己所规定的格式分割 -->
+            </template>
+        </tqa>
+    </div>
+</body>
+<template id="one">
+    <div>
+        <slot :data='languages'>
+            <!-- data属性是自己定义的,把languages的数据绑定到data里面 -->
+            <ul>
+                <li v-for='item in languages'>{{item}}</li>
+            </ul>
+        </slot>
+    </div>
+</template>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        },
+        components: {
+            tqa: {
+                template: '#one',
+                data() {
+                    return {
+                        languages: ['c++', 'java', 'swift', 'javascript']
+                    }
+                }
+            },
+        }
+    })
+</script>
+
+</html>

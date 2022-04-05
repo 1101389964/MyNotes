@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn :cmovies="moives" :cmessage="messgae"></cpn>
+        <!-- 通过v-bind把子组件的cmovies与movies绑定在一起 -->
+    </div>
+</body>
+<template id='tmp'>
+    <div>
+        <ul v-for="item in cmovies">
+            <li>{{item}}</li>
+        </ul>
+        <p>{{cmessage}}</p>
+    </div>
+</template>
+<script>
+    const cpn = {
+        template: '#tmp',
+        props: ['cmovies', 'cmessage'],
+        /* props获取父组件的值 */
+    }
+    const app = new Vue({
+        el: "#app",
+        data: {
+            moives: ["钢铁侠", "美国队长", "雷神", "绿巨人", "黑寡妇", "鹰眼"],
+            messgae: "hello",
+        },
+        components: {
+            cpn
+        }
+    })
+</script>
+
+</html>

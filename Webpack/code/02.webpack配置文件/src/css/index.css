@@ -1,0 +1,25 @@
+body {
+  color: aqua;
+}
+
+/* 该伪类在部分游览器中不适配，配置了postcss-loader在打包中会添加游览器前缀来适应browserslistrc所查询到的游览器版本 */
+:fullscreen {
+  color: red;
+}
+
+.box {
+  user-select: none;
+}
+
+.imgBox {
+  height: 500px;
+  width: 700px;
+  background-color: blanchedalmond;
+  background-image: url("../img/二次元.jpg");
+  background-size: contain;
+}
+
+img {
+  height: 500px;
+  width: 700px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <input type="text" v-model="message" />
+      <button @click="add">更新</button>
+      <button @click="del">删除</button>
+      <button @click="change">替换</button>
+      <ul>
+        <li :key="index" v-for="(item,index) in lis">{{item}}</li>
+      </ul>
+    </div>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "",
+          lis: ["one", "two", "three"],
+        },
+        methods: {
+          add: function () {
+            this.lis.push(this.message);
+          },
+          del: function () {
+            this.lis.pop(); //push与pop属于变异方法,可以修改直接原始数据，
+          },
+          change: function () {
+            this.lis = this.lis.slice(0, 2); //slice，属于替换数组,截取数组从0开始截取截取到第2个会新成一个新的数组不会影响以前的数组，所以必须得赋值给原来的数组
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

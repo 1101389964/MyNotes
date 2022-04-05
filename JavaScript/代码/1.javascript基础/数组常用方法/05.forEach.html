@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var arr = [12, 66, 4, 88, 3, 7];
+    var sum = 0;
+    arr.forEach(function (value, index, array) {
+        console.log("第" + index + "元素" + value);
+        sum += value;
+        return sum;//没有返回值，只执行步骤
+    })
+    console.log(sum);
+</script>
+
+</html>

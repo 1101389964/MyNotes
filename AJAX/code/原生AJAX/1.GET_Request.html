@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AJAX GET 请求</title>
+  <style>
+    button {
+      display: block;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <button>发生请求</button>
+    <textarea></textarea>
+  </div>
+</body>
+<script>
+  let btn = document.querySelector('button');
+  let inner = document.querySelector("textarea");
+  btn.addEventListener("click", () => {
+    //1.创建对象
+    const XHR = new XMLHttpRequest();
+    //2.初始化 设置请求方法和url
+    XHR.open("GET", "http://127.0.0.1:8000/server?a=100&b=200&c=300");//后面的?a=100&b=200&c=300表示参数
+    //3.发送
+    XHR.send();
+    //4.事件绑定 处理服务端返回的结果
+    /* 
+    onreadystatechange:含义
+    on当...时候，
+    readystate表示XHR对象的属性，这个属性有5个值：
+    0：表示属性未初始化，属性最开始的值就是0，
+    1：表示open方法调用完毕
+    2：表示send方法调用完毕
+    3：表示服务端放回部分结果
+    4：表示服务端返回所有结果
+    change：改变
+    所以这个onreadystatechange表示当属性值改变时触发
+    会触发4次0-1,1-2,2-3,3-4；
+    */
+    XHR.onreadystatechange = function () {
+      //当服务端返回左右结果时
+      if (XHR.readyState === 4) {
+        //判断相应的状态码，当状态码为200-300都视为成功
+        if (XHR.status >= 200 && XHR.status < 300) {
+          //处理结果 
+          //响应行
+          console.log("状态码:", XHR.status);//状态码
+          console.log("状态字符串:", XHR.statusText);//状态字符串
+          //所有响应头
+          console.log("响应头:", XHR.getAllResponseHeaders());
+          //相应体
+          console.log("相应体:", XHR.response);
+          //设置textarea的文本
+          inner.innerHTML = XHR.response;
+        }
+      }
+    }
+  }
+  )
+</script>
+
+</html>

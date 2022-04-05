@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!--         <select name="" v-model='fruit' id="" @click='seck'>
+            v-model是绑定在select里面，不是绑定在option里面，option只是select里面的一个选项
+            通过调用seck方法，打印出的fruit是一个特定的值
+            <option value="苹果">苹果</option>
+            <option value="香蕉">香蕉</option>
+            <option value="菠萝">菠萝</option>
+            <option value="桃子">桃子</option>
+        </select> -->
+        <select name="" v-model='fruit' id="" multiple @click='seck'>
+            multiple是多选的意思,通过调用seck方法，打印出的fruit是一个数组
+            <option value="苹果">苹果</option>
+            <option value="香蕉">香蕉</option>
+            <option value="菠萝">菠萝</option>
+            <option value="桃子">桃子</option>
+        </select>
+        <h3>你选择的是{{fruit}}</h3>
+    </div>
+</body>
+<script>
+    let app = new Vue({
+        el: '#app',
+        data: {
+            fruit: [],
+        },
+        methods: {
+            seck: function () {
+                console.log(this.fruit);
+            }
+        }
+    })
+</script>
+
+</html>

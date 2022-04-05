@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      class phone {
+        constructor(price, sex) {
+          this.price = price;
+          this.sex = sex;
+        }
+        G(g) {
+          console.log(g);
+        }
+      }
+      var HuaWei = new phone(5899, "HuaWei p40 pro");
+      var Honor = new phone(4999, "HONOR 30 pro+");
+      console.log(HuaWei);
+      console.log(Honor);
+      console.log(HuaWei.sex + "的价格是" + HuaWei.price);
+      console.log(Honor.sex + "的价格是" + Honor.price);
+      HuaWei.G("5G");
+      HuaWei.G("5G");
+    </script>
+  </head>
+  <body></body>
+</html>

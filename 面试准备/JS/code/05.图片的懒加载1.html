@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+      img {
+        display: block;
+        margin-bottom: 50px;
+        width: 400px;
+        height: 650px;
+      }
+    </style>
+  </head>
+
+<body>
+  <img src="" data-src="https://img0.baidu.com/it/u=2637960104,2696565974&fm=26&fmt=auto" alt="">
+  <img src=""
+    data-src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fmobile%2F2020-03-17%2F5e70362d1a920.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648816146&t=2fb5c9c504b9f873f4ab09324735650a"
+    alt="">
+  <img src=""
+    data-src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Ftva1.sinaimg.cn%2Flarge%2F005NWMakgy1gruks7tepij60yi22oarp02.jpg&refer=http%3A%2F%2Ftva1.sinaimg.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648816146&t=91be8ea118cb4c74e144558114ac386f"
+    alt="">
+  <img src=""
+    data-src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fpic1.win4000.com%2Fmobile%2F2020-10-13%2F5f85462dbbd64.jpg&refer=http%3A%2F%2Fpic1.win4000.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648816146&t=7d48e8aff0823391d11ebb1a46fe84c8"
+    alt="">
+  <img src=""
+    data-src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fp1.itc.cn%2Fimages01%2F20201221%2F7d672a01c77745b4a7f0b52dde9aab80.jpeg&refer=http%3A%2F%2Fp1.itc.cn&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648816146&t=a3edf39f2f849c6dd4700d2a4d5c02f3"
+    alt="">
+</body>
+
+<script>
+  const imgs = document.querySelectorAll("img");
+  imgs.forEach((item) => {
+    const top = item.getBoundingClientRect().top;
+    if (top < window.innerHeight) {
+      const url = item.getAttribute("data-src");
+      item.src = url;
+    }
+  })
+  window.addEventListener("scroll", (e) => {
+    imgs.forEach((item) => {
+      const top = item.getBoundingClientRect().top;
+      if (top < window.innerHeight) {
+        const url = item.getAttribute("data-src");
+        item.src = url;
+      }
+    })
+  })
+</script>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <script>
+    var re = /abc/;
+    //只要包含abc都为ture；
+    console.log(re.test("abcde")); //ture
+    console.log(re.test("frab")); //false
+    console.log(re.test("ads")); //false
+    console.log(re.test("abc")); //ture
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    re = /^abc$/;
+    //^是以abc开头的意思,$是以abc结尾的意思
+    //必须全是abc
+    console.log(re.test("abcde")); //false
+    console.log(re.test("frab")); //false
+    console.log(re.test("abc")); //ture
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    re = /[abc]/;
+    // 只要包含abc中任意一个都为ture
+    console.log(re.test("a")); //ture
+    console.log(re.test("rieo")); //false
+    console.log(re.test("abcfd")); //ture
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    re = /^[abc]$/;
+    //只有a，b，c中一个才返回ture
+    console.log(re.test("abc")); //false
+    console.log(re.test("a")); //ture
+    console.log(re.test("b")); //ture
+    console.log(re.test("adle")); //false
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    re = /[a-z]/;
+    //只要包含a~z里面的一个就为ture，可以多个一起。
+    console.log(re.test("fdssadklsad")); //ture
+    console.log(re.test("123")); //false
+    console.log(re.test("sad1233")); //ture
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    re = /^[a-z]$/;
+    //只包含a~z的26个英文字母里面的一个才为ture，多则不行
+    console.log(re.test("sad")); //false
+    console.log(re.test("a")); //ture
+    console.log(re.test("1231sad")); //false
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    re = /[a-zA-Z]/;
+    //只要包含大写或者小写的26个英文字母都为ture，不限个数。
+    console.log(re.test("sadDWEFD")); //ture
+    console.log(re.test("dsa13sddDSA")); //ture
+    console.log(re.test("123421")); //false
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    re = /[a-zA-Z0-9_-]/;
+    //只要包含大写或者小写的26个英文字母或者1-9的数字或者_或者-都为ture，不限个数。
+    console.log(re.test("sadDWEFD")); //ture
+    console.log(re.test("dsa13sddDSA")); //ture
+    console.log(re.test("123421")); //ture
+    console.log(re.test(123421)); //ture
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    re = /[^abc]/;
+    //^在方括号[]内部表示取反只要包含abc里面的一个都为flase
+    console.log(re.test("a")); //false
+    console.log(re.test("abc")); //false
+    console.log(re.test("frfdl")); //ture
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    // * 相当于>=0可以出现0次或者很多次
+    re = /^a*$/;
+    console.log(re.test(''));//true
+    console.log(re.test('a'));//true
+    console.log(re.test('aaaa'));//true
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    // + 相当于>=1可以出现1次或者很多次
+    re = /^a*$/;
+    console.log(re.test(''));//false
+    console.log(re.test('a'));//true
+    console.log(re.test('aaaa'));//true
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    // ? 出现1次或0次
+    re = /^a?$/;
+    console.log(re.test(''));//true
+    console.log(re.test('a'));//true
+    console.log(re.test('aaaa'));//false
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    // {3} 重复3次
+    re = /^a{3}$/;
+    console.log(re.test(''));//false
+    console.log(re.test('a'));//false
+    console.log(re.test('aaa'));//true
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    // {3，} 大于等于3
+    re = /^a{3,}$/;
+    console.log(re.test(''));//false
+    console.log(re.test('a'));//false
+    console.log(re.test('aaa'));//true
+    console.log(re.test('aaaa'));//true
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+    // {3，6} 大于等于3且小于等于6
+    re = /^a{3,6}$/;
+    console.log(re.test(''));//false
+    console.log(re.test('a'));//false
+    console.log(re.test('aaa'));//true
+    console.log(re.test('aaaaaaaaa'));//false
+    console.log(
+      "/////////////////////////////////////////////////////////////////"
+    );
+  </script>
+</head>
+
+<body></body>
+
+</html>

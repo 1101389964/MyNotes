@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="img1">img1</button>
+    <button id="img2">img2</button>
+    <img id="img" src="当幸福来敲门12020021117055.jpg" alt="" />
+    <script>
+      var clickone = document.getElementById("img1");
+      var clicktow = document.getElementById("img2");
+      var img = document.getElementBy("img");
+      clickone.onclick = function () {
+        img.src = "当幸福来敲门120200211170459.jpg";
+      };
+      clicktow.onclick = function () {
+        img.src = "当幸福来敲门120200211170556.jpg";
+      };
+    </script>
+  </body>
+</html>

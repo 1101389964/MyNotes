@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .slider-bar {
+      position: absolute;
+      left: 50%;
+      top: 300px;
+      margin-left: 600px;
+      width: 45px;
+      height: 130px;
+      background-color: pink;
+    }
+
+    .w {
+      width: 1200px;
+      margin: 10px auto;
+    }
+
+    .header {
+      height: 150px;
+      background-color: purple;
+    }
+
+    .banner {
+      height: 250px;
+      background-color: skyblue;
+    }
+
+    .main {
+      height: 1000px;
+      background-color: yellowgreen;
+    }
+
+    .goBack {
+      display: none;
+      position: absolute;
+      bottom: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="slider-bar">
+    <span class="goBack">返回顶部</span>
+  </div>
+  <div class="header w">头部区域</div>
+  <div class="banner w">banner区域</div>
+  <div class="main w">主体部分</div>
+  <script>
+    //主要是灵活运用window.pageYOffset,游览器整个页面上面的高度到底一定时css发生变化
+    var slider = document.querySelector(".slider-bar");
+    var banner = document.querySelector(".banner");
+    var span = document.querySelector(".goBack");
+    var header = document.querySelector(".header");
+    var main = document.querySelector(".main");
+    var slidertop = slider.offsetTop;
+    var fixheight = slider.offsetTop - banner.offsetTop; //固定定位之后的高度
+    document.addEventListener("scroll", function () {
+      if (window.pageYOffset > banner.offsetTop) {
+        slider.style.position = "fixed";
+        slider.style.top = fixheight + "px";
+      } else if (window.pageYOffset <= banner.offsetTop) {
+        slider.style.position = "absolute";
+        slider.style.top = slidertop + "px";
+      }
+      if (window.pageYOffset > main.offsetTop) {
+        span.style.display = "block";
+      } else if (window.pageYOffset <= main.offsetTop) {
+        span.style.display = "none";
+      }
+    });
+    span.addEventListener("click", function () {
+      //里面不需要填写单位;
+      animate(window, 0); //返回页面顶部
+    });
+    function animate(obj, target, callback) {
+      //obj是需要添加动画的对象,target是动画移动的目标值,callback是结束时候的调用函数
+      clearInterval(obj.time); //每次调用函数需要先清除上次的点击时间回调函数，否则当函数执行多次时会多次进行时间回调函数，动画就会出现问题
+      obj.time = setInterval(function () {
+        //使用添加obj对象的方法添加调用函数可以提高执行效率，否则每次执行该函数都是相同的
+        var step = (target - window.pageYOffset) / 10; //step每次减小的公式
+        step = step > 0 ? Math.ceil(step) : Math.floor(step); //如果step大于0则网上取整，小于0则往下取整
+        window.scroll(0, window.pageYOffset + step);
+        if (window.pageYOffset == target) {
+          clearInterval(obj.time); //执行穿过来的函数
+          if (callback) callback();
+        }
+      }, 10);
+    }
+  </script>
+</body>
+
+</html>

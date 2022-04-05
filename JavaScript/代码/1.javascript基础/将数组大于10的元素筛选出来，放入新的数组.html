@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script>
+    // 方法一
+    /*     var arr = [2, 0, 77, 2, 52, 0, 25, 7];
+        var arry = [];
+        var j = 0;
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] > 10) {
+                arry[j] = arr[i];
+                j++;
+            }
+        } 
+        console.log(arry); */
+
+    // 方法二
+    var arr = [2, 0, 77, 2, 52, 0, 25, 7];
+    var arry = [];
+    for (var i = 0; i < arr.length; i++) {
+        if (arr[i] > 10) {
+            arry[arry.length] = arr[i];
+            // 通过arry.length来追加长度，每多一个变量arry.length就增加一个。
+        }
+    }
+    console.log(arry);
+</script>
+
+<body>
+
+</body>
+
+</html>

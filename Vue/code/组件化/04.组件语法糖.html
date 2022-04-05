@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <Mycomp></Mycomp>
+    </div>
+</body>
+<script>
+    /* 不需要创建组件构造器的，直接把组件写进注册组件里面  */
+    Vue.component('Mycomp', {
+        /* template是模块的意思 */
+        template:
+            `<div>
+            <h3>组件化调试1</h3>
+            <h3>组件化调试2</h3>
+            <h3>组件化调试3</h3>
+        </div> `
+    })
+
+    let app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        methods: {
+
+        }
+    })
+</script>
+
+</html>

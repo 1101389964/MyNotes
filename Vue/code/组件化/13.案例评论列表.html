@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <link rel="stylesheet" href="./bootstrap-3.3.7.css">
+</head>
+<!-- 
+    业务逻辑：当点击子组件的`发表评论`，会把评论人和评论信息copy到评论板上
+ -->
+
+<body>
+    <div id="app">
+        <comp @increase='increa'></comp>
+        <!-- increase为子组件发送过来的事件 -->
+        <ul class="list-group">
+            <li class="list-group-item" v-for="item in list" :key="item.id">
+                <span class="badge">评论人： {{ item.user }}</span>
+                {{ item.content }}
+            </li>
+        </ul>
+    </div>
+</body>
+<!-- 子组件 -->
+<template id="tmp1">
+    <div>
+        <div class="from-group">
+            <label>评论人:</label>
+            <input type="text" class="form-control" v-model='people'>
+        </div>
+        <div class="from-group">
+            <label>评论内容:</label>
+            <textarea class="form-control" v-model='content'></textarea>
+            <!-- 子组件里面的数据需要定义到子组件data()里面 -->
+        </div>
+        <div class="from-group">
+            <input class="btn-primary" type="button" value="发表评论" @click='add'>
+
+        </div>
+    </div>
+</template>
+
+<script>
+    var commentBox = {
+        template: '#tmp1',
+        data() {
+            return {
+                people: '',
+                content: "",
+            }
+        },
+        methods: {
+            add: function () {
+                this.$emit('increase', { id: Date.now(), user: this.people, content: this.content });
+                /* 当触发点击事件时，会发送将increase发送到父组件后面的对象是需要发送的内容 */
+                this.people = '';
+                this.content = '';
+            }
+        }
+    }
+    var app = new Vue({
+        el: "#app",
+        data: {
+            list: [
+                { id: Date.now(), user: '李白', content: '今朝有酒今朝醉' },
+                { id: Date.now(), user: '李信', content: '这是由我统帅的战场' },
+                { id: Date.now(), user: '韩信', content: '不做无法实现的梦' },
+                { id: Date.now(), user: '马超', content: '不必标识辨认我，识我的枪吧！' }
+            ],
+        },
+        methods: {
+            increa(event) {
+                /* event为子组件发送过来的数据 */
+                if (event.user != '' && event.content != '')
+                    this.list.push(event)
+            }
+        },
+        components: {
+            comp: commentBox,
+        }
+    })
+</script>
+
+</html>

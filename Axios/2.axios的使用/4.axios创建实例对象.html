@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.21.1/axios.js"></script>
+
+</head>
+
+<body>
+  <div></div>
+  <div></div>
+</body>
+<script>
+  /*
+  ** 使用aixos创建实例的优点是:(有时候服务器不止一个，需要向不同的服务器发送请求)
+  *  可以创建不同URL的实例向不同的服务器发送请求，而配置baseURL是做不到的
+  *  如果设置了全局的配置方法，而实例配置中没有设置相应的方法，则延用全局的方法，否则，以实例中的方法为主。
+  *  优先级：请求配置 > 实例配置 > 全局配置
+  */
+  const div = document.querySelectorAll('div');
+  //创建axios实例
+  const first = axios.create({
+    baseURL: 'http://localhost:3000/posts',
+    timeout: 2000
+  })
+  const second = axios.create({
+    baseURL: "http://localhost:3000/comments",
+    timeout: 2000
+  })
+
+  //用第一个aixos实例发送get请求，类似于单独的axios
+  const oo = first({
+    method: "GET",
+    url: '/2'
+  }).then(response => {
+    console.log(response);
+    div[0].innerHTML = response.data.title;
+  })
+
+  //用第二个axios发送get请求，类似于axios方法发送
+  second.get("/1").then(result => {
+    console.log(result);
+    div[1].innerHTML = result.data.body;
+  })
+</script>
+
+</html>

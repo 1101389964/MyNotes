@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+    <script src="./vue-router-3.0.1.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <router-view></router-view>
+    </div>
+</body>
+
+<template id="stare">
+    <div>
+        <h2>首页</h2>
+        <router-link to='/stare/login'>登录</router-link>
+        <router-link to='/stare/resgister'>注册</router-link>
+        <router-view></router-view>
+    </div>
+</template>
+<script>
+    var stare = {
+        template: '#stare',
+    }
+    var login = {
+        template: '<h4>登录</h4>'
+    }
+    var resgister = {
+        template: '<h4>注册</h4>'
+    }
+    var routerObj = new VueRouter({
+        routes: [
+            {
+                path: '/stare',
+                component: stare,
+                children: [
+                    { path: 'login', component: login },
+                    { path: 'resgister', component: resgister }
+                ]
+                /*
+                 在父路由里面添加子路由，通过children
+                 这样当点击`登录`或者`注册`时登录和注册的组件才不会把原来的组件替代掉
+                 而是插入到组件的<router-view></router-view>里面
+                */
+            },
+            { path: '/', redirect: '/stare' },
+        ]
+    })
+
+    var app = new Vue({
+        el: '#app',
+        data: {
+
+        },
+        router: routerObj
+    })
+</script>
+
+</html>

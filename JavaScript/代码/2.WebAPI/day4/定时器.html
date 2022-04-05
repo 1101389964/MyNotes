@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      img {
+        width: 400px;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var img = document.querySelector("img");
+        var span = document.querySelector("span");
+        var button = addEventListener("click", function () {
+          img.style.display = "none";
+        });
+        var n = 5;
+        span.innerHTML = "图片关闭时间还有" + n + "秒";
+        setInterval(function () {
+          if (img.style.display == "none") n = 0;
+          if (n > 1) {
+            n--;
+            span.innerHTML = "图片关闭时间还有" + n + "秒";
+          } else {
+            span.innerHTML = "";
+          }
+        }, 1000);
+        setTimeout(function () {
+          img.style.display = "none";
+        }, 5000);
+      });
+    </script>
+  </head>
+  <body>
+    <span>sdada</span>
+    <img src="../day2/1.jpg" alt="" />
+    <button>关闭</button>
+    <!-- <script>
+      // 获取要操作的元素
+      var ad = document.querySelector("img");
+      // 开启定时器
+      setTimeout(function () {
+        ad.style.display = "none";
+        console.log("dsasa");
+      }, 2000);
+    </script> -->
+  </body>
+</html>

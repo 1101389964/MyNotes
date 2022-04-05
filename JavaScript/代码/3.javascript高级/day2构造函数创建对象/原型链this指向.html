@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    var that;
+    var satr = function (height, weight) {
+        console.log(this);
+        this.height = height;
+        this.weight = weight;
+        //这样定义构造函数为什么和下面有什么区别？
+    }
+    /* function satr(height, weight) {
+        console.log(this);
+        this.height;
+        this.weight;
+    } */
+    //new 相当于做了这些
+    satr.prototype.hobby = function (hby) {
+        console.log(this);
+        that = this;
+        console.log(hby);
+    }
+
+    function test(params) {
+
+    }
+
+    function myNew(test, ...arg) {
+        let obj = {};
+        test.call(obj, ...arg);
+        return obj
+    }
+
+    var ao = new satr(172, 120);
+    ao.hobby(['拍照', '吃饭']);
+    console.log(that === ao);//true,
+    console.log(that, ao);
+</script>
+
+</html>

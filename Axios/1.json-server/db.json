@@ -1,0 +1,29 @@
+{
+  "posts": [
+    {
+      "title": "put",
+      "author": "更改信息",
+      "id": 1
+    },
+    {
+      "id": 2,
+      "title": "测试",
+      "author": "none"
+    },
+    {
+      "title": "test",
+      "author": "aozige",
+      "id": 3
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

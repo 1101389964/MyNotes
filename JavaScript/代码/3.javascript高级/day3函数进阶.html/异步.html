@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li><button>1</button></li>
+        <li><button>2</button></li>
+        <li><button>3</button></li>
+        <li><button>4</button></li>
+    </ul>
+</body>
+<script>
+    var lis = document.querySelectorAll('li');
+    for (let i = 0; i < lis.length; i++) {
+        lis[i].onclick = function () {
+            console.log(i);
+            //无论点击第几个都显示4，因为JS先执行同步任务lis[i].onclick,后面的function是异步任务，所以当点击之后i已经为4了
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #question {
+            margin: 50px auto;
+            height: 50px;
+            width: 425px;
+            font-size: 15px;
+        }
+
+        button {
+            display: block;
+            margin: 5px auto;
+            margin-left: 900px;
+            height: 25px;
+            width: 70px;
+            background-color: slategrey;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="question">
+    </div>
+    <button>开始查找</button>
+    <script>
+        //把下面数组分类，1:属于数字的      2:可以转化为数据的      3:所有属于非数字的位置
+        var arry = new Array("100px", "abc" - 6, [], -98765, 34, -2, 0, '300', null, document, true, '200px' - 30, '23.45元', 5, 'xyz' - 90);
+        var arry1 = [];
+        var arry2 = [];
+        var arry3 = [];
+        var div = document.querySelector("#question");
+        var button = document.querySelector('button');
+        for (var i = 0; i < arry.length; i++) {
+            if (typeof (arry[i]) == "number" && typeof (arry[i]) != NaN) {
+                arry1.push(arry[i]);
+                arry2.push(arry[i]);
+            }
+            else if (parseInt(arry[i]) != NaN) {
+                arry2.push(arry[i])
+                if (isNaN(arry[i]) === true) {
+                    arry3.push(i);
+                }
+            }
+            else if (isNaN(arry[i]) === true) {
+                arry3.push(i);
+            }
+        }
+        div.innerHTML = "对一下数据分别执行“找出所有数字”、“找出可以转化成数字的所有数据”以及“找出所有运算结果是NaN的数据”等操作：</br>"
+        console.log(typeof (arry[11]));
+        console.log(arry[11]);
+        button.onclick = function () {
+            alert("属于数字的 " + arry1.join('、') + "\n" + "可以转化为数据的" + arry2.join("、") + "\n" + "所有属于非数字的位置" + arry3.join("、"));
+        }
+    </script>
+</body>
+
+</html>
