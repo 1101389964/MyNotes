@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="app">点击</button>
+  </body>
+  <script>
+    const app = document.querySelector('#app');
+    // 定义一个类
+    class Person{
+      constructor(name){
+        this.name = name;
+      }
+      fun(){
+        console.log(this);
+      }
+    }
+    // 实例化
+    const people = new Person('秀妍');
+
+    people.fun(); // this指向people
+    app.onclick = people.fun; // this指向绑定事件的DOM对象
+    // app.onclick = people.fun.bind(people);   // this指向people
+    /**
+     * 其实这就是this绑定时的指向问题
+     * people.fun() 是隐世绑定，this指向绑定的对象
+     * 而事件绑定时，this就指向被绑定的DOM了，所以需要修改this指向
+     */
+
+  </script>
+</html>
