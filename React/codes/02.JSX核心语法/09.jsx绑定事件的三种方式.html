@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    message: 0,
+                }
+                /* construct中订定义方法不能使用() */
+                this.add = this.add.bind(this);
+            }
+            render() {
+                const { message } = this.state;
+                return (
+                    <div>
+                        <div>当前数字：{message}</div>
+
+                        {/* 1.在construct中把add方法的this指向改为类中的this指向，然后直接使用 */}
+                        <button onClick={this.add}>+</button>
+
+                        {/* 2.定义方法时用箭头函数定义  */}
+                        <button onClick={this.reduce}>-</button>
+
+                        {/*
+                        3.调用方法时直接使用箭头函数调用 
+                        因为箭头函数里面没有this，所以在箭头函数里面执行的this.clear
+                        中的this是指向render里面的this，而在render里面使用this直接调用方法，
+                        this的指向还是指向类里面，不会为undefined。所以调用this.clear方法
+                        this指向还是为class里面
+                        */}
+                        <button onClick={() => { this.clear() }}>清零</button>
+                        {/* 这里面方法必须要带() */}
+                    </div>
+                )
+            }
+            add() {
+                /* 添加了setState方法，在调用方法时就不能使用() */
+                this.setState({
+                    message: this.state.message + 1
+                })
+            }
+
+            reduce = () => {
+                /*
+                 箭头函数是不绑定this的，如果调用this，
+                 会向上一级作用域依次寻找this 
+                 直到找到this,所以箭头函数this指向的是上下文中的this
+                 */
+                console.log(this);
+                this.setState({
+                    message: this.state.message - 1
+                })
+            }
+            clear() {
+                console.log(this);
+                this.setState({
+                    message: 0,
+                })
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

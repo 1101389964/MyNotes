@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="../00.依赖/react@17umdreact.development.js"></script>
+    <script src="../00.依赖/react-dom@17umdreact-dom.development.js"></script>
+    <script src="../00.依赖/babel-standalone@6babel.min.js"></script>
+
+</body>
+
+<script type="text/babel">
+    class App extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                message: 0,
+            }
+        }
+        render() {
+            return (
+                <div>
+                    <h2>当前计数{this.state.message}</h2>
+                    <button onClick={(e) => { this.add() }}>+1</button>
+                    <button onClick={(e) => { this.reduce() }}>-3</button>
+                </div>
+            )
+        }
+        add() {
+            this.setState({
+                message: this.state.message + 3
+            })
+            this.setState({
+                message: this.state.message + 2
+            })
+            this.setState({
+                message: this.state.message + 1
+            })
+            /* 
+            调用了3次this.setState,但message并没用加3次，
+            因为react内部合并了setState,所以只执行了一次.
+            而且合并是以最后一次this.setState执行的
+            */
+        }
+        /* 
+        在setState里面执行回调函数的形式可以执行3次
+        并且不会覆盖掉原来的数据
+         */
+        reduce() {
+            this.setState((prevState, props) => {
+                console.log(prevState);
+                /* 第一个参数为保存原来数据的对象；可以获取原来的数据 */
+                return {
+                    message: prevState.message - 1
+                }
+            })
+            this.setState((prevState, props) => {
+                return {
+                    message: prevState.message - 1
+                }
+            })
+            this.setState((prevState, props) => {
+                return {
+                    message: prevState.message - 1
+                }
+            })
+        }
+
+    }
+    ReactDOM.render(<App />, document.querySelector("#app"));
+</script>
+
+</html>

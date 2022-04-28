@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button>change text</button>
+        <!-- 
+            这里的btton不会显示，react会覆盖掉整个app
+            应该写到ReactDOM.render里面
+         -->
+    </div>
+
+    <!-- 添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        let message = "hello world";
+        function btnClick() {
+            message = "Hello React";
+            console.log(message);
+            render();//更改了dom，需要调用react实例化对象重新加载dom，否则dom没有反应
+        }
+        function render() {
+            ReactDOM.render(
+                <div>
+                    <h2>{message}</h2>
+                    <button onClick={btnClick}>改变文本</button>
+                </div>,//这里只能有一个标签，其他标签被包裹在大标签里面
+                document.querySelector("#app")
+            )
+        }
+        render();
+    </script>
+</body>
+
+</html>

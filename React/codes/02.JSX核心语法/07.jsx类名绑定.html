@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    active: true,
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        {/* 
+                        原生HTML类名class与js中的类class相同，
+                        为了避免冲突，jsx用来className当做类名
+                        在jsx中使用class只会警告，类名在HTML中依然会被渲染出来
+                        但jsx不建议这样使用
+                        */}
+                        <span className="myName">调试className</span>
+                        {/* 同理label中的for需要用htmlFor替代 */}
+                        <label htmlFor=""></label>
+                        {/* 
+                        动态渲染class类名，需要用js语法渲染
+                        注意：1.第一个类名与第二个类名之间必须要以空格隔开，否则两个类名会连在一起
+                             2.后面的三元运算符，必须要加()，否则前面的类名显示不出来
+                        */}
+                        <div className={"one " + (this.state.active ? "active" : "")}>动态获取类名</div>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

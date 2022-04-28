@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="../00.依赖/react@17umdreact.development.js"></script>
+    <script src="../00.依赖/react-dom@17umdreact-dom.development.js"></script>
+    <script src="../00.依赖/babel-standalone@6babel.min.js"></script>
+
+</body>
+
+<script type="text/babel">
+    //PureComponent会浅比较当前的组件(this.state和this.props)有没有被更新,如果被更新则调用render函数，否则不调用；
+    //结果显示只调用App父组件，其他子组件没有state更新，所以没有被调用
+    class Header extends React.PureComponent {
+        render() {
+            console.log("Header被调用");
+            return <div>header组件</div>;
+        }
+        //当继承React.PureComponent不要使用shouldComponentUpdate
+        /* shouldComponentUpdate() {
+            return false
+        } */
+    }
+    class Main extends React.PureComponent {
+        render() {
+            console.log("Main被调用");
+            return <div>main组件</div>;
+        }
+
+    }
+    class Footer extends React.PureComponent {
+        render() {
+            console.log("Footer被调用");
+            return <div>footer组件</div>;
+        }
+    }
+
+    class App extends React.PureComponent {
+        constructor() {
+            super();
+            this.state = {
+                number: 0
+            }
+        }
+        render() {
+            console.log("调用App组件");
+            return (
+                <div>
+                    <h2>当前计数：{this.state.number}</h2>
+                    <button onClick={() => { this.add() }}>+1</button>
+                    <Header />
+                    <Main />
+                    <Footer />
+                </div>
+            );
+        }
+        add() {
+            this.setState({
+                number: this.state.number + 1,
+            })
+        }
+    }
+    ReactDOM.render(<App />, document.querySelector("#app"));
+</script>
+
+</html>

@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+}
+.tab-control {
+  display: flex;
+}
+.table-item {
+  flex: 1;
+  text-align: center;
+  padding: 5px;
+}
+
+.table-item.active {
+  color: red;
+  border-bottom: 2px red solid;
+}

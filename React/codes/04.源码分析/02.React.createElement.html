@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="../00.依赖/react@17umdreact.development.js"></script>
+    <script src="../00.依赖/react-dom@17umdreact-dom.development.js"></script>
+    <script src="../00.依赖/babel-standalone@6babel.min.js"></script>
+
+    <script type="text/babel">
+        const message = (
+            <div>
+                <div className="header">
+                    <h2 title="标题">title</h2>
+                </div>
+                <div className='content'>
+                    <h2>这是一段类容</h2>
+                    <button>按钮</button>
+                    <a href="www.baidu.com">百度</a>
+                </div>
+                <div className='footer'>
+                    <p>尾部类容</p>
+                </div>
+            </div>
+        );
+        /* 
+        传递的参数大于1个，源码里面是通过函数的arguments来实现传递参数的，
+        通过判断arguments - 2大于1还是等于1以此来判断传递的参数
+        */
+        const useCreateElement =
+            React.createElement("div", null,
+                React.createElement("div", { className: "header" },
+                    React.createElement("h2", { title: "\u6807\u9898" }, "title")
+                ),
+                React.createElement("div", { className: "content" },
+                    React.createElement("h2", null, "\u8FD9\u662F\u4E00\u6BB5\u7C7B\u5BB9"),
+                    React.createElement("button", null, "\u6309\u94AE"),
+                    React.createElement("a", { href: "www.baidu.com" }, "\u767E\u5EA6")
+                ),
+                React.createElement("div", { className: "footer" },
+                    React.createElement("p", null, "\u5C3E\u90E8\u7C7B\u5BB9")
+                )
+            );
+        console.log(useCreateElement);
+        /* 
+        打印创建的该对象，里面有props对象，该对象存放着children数组，
+        该数组正好为3个div，然后三个div里面的children数组里面再存放对应自己的内容标签 
+        正好对应了DOM结构，这个称为虚拟DOM，然后经过React.render渲染为HTML可显示的DOM树结构
+        */
+        ReactDOM.render(useCreateElement, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,9 @@
+#Setting {
+  color: tomato;
+  font-size: 20px;
+}
+
+#Setting #title {
+  color: blueviolet;
+  font-size: 12px;
+}

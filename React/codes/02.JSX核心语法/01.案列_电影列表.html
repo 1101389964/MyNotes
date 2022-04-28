@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- 2.编写代码 -->
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    headline1: '电影列表1',
+                    movies1: ["哈利波特", "复仇者联盟", "星际穿越", "流浪地球"],
+                    headline2: '电影列表2',
+                    movies2: ["蝙蝠侠", "肖申克的救赎", "权力的游戏", "指环王"],
+                }
+            }
+            render() {
+                let lis = [];
+                /* 通过变量数组放到lis里面 */
+                /* 
+                let key of value 为es6变量数组语法，key为数组的值
+                let index in value index 为数组的下标
+                */
+                for (let movie of this.state.movies1) {
+                    lis.push(<li>{movie}</li>);
+                }
+                return (
+                    //1.通过for循环导入li
+                    //2.通过map变量数组
+                    <div>
+                        <h2>{this.state.headline1}</h2>
+                        <ul>
+                            {lis}
+                        </ul>
+                        <h2>{this.state.headline1}</h2>
+                        <ul>
+                            {
+                                this.state.movies2.map((item) => {
+                                    return <li>{item}</li>
+                                })
+                            }
+                        </ul>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"))
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="../00.依赖/react@17umdreact.development.js"></script>
+    <script src="../00.依赖/react-dom@17umdreact-dom.development.js"></script>
+    <script src="../00.依赖/babel-standalone@6babel.min.js"></script>
+
+</body>
+
+<script type="text/babel">
+    function Header() {
+        console.log("Header被调用");
+        return <div>header组件</div>;
+    }
+
+    function Main() {
+        console.log("Main被调用");
+        return <div>main组件</div>;
+    }
+
+    function Footer() {
+        console.log("Footer被调用");
+        return <div>footer组件</div>;
+    }
+
+    class App extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                number: 0
+            }
+        }
+        render() {
+            return (
+                <div>
+                    <h2>当前计数：{this.state.number}</h2>
+                    <button onClick={() => { this.add() }}>+1</button>
+                    {/* 
+                        调用add函数使number加一，并没有依赖或者影响到下面组件
+                        但是结果显示下面组件还是被调用，非常影响性能；
+                        shouldComponentUpdate可以优化这样的情况
+                     */}
+                    <Header />
+                    <Main />
+                    <Footer />
+                </div>
+            );
+        }
+        add() {
+            this.setState({
+                number: this.state.number + 1,
+            })
+        }
+    }
+    ReactDOM.render(<App />, document.querySelector("#app"));
+</script>
+
+</html>

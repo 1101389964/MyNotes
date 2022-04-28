@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        li {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="../00.依赖/react@17umdreact.development.js"></script>
+    <script src="../00.依赖/react-dom@17umdreact-dom.development.js"></script>
+    <script src="../00.依赖/babel-standalone@6babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    word: ['hhh', 'aaa', 'eee', 'ooo'],
+                    number: [23, 54, 78, 34, 98, 62, 55, 94]
+                }
+            }
+            render() {
+                const { word, number } = this.state;
+                return (
+                    <div>
+                        <ul>
+                            <h3>word：</h3>{
+                                word.map((item) => {
+                                    return <li>{item}</li>
+                                })
+                            }
+                        </ul>
+                        <ul>
+                            {/* 筛选大于50的数字然后渲染到ul>li列表吗，先用filter，filter返回的是满足条件为true的值 */}
+                            <h3>number:</h3>{
+                                number.filter(item => item >= 50).map(item => <li>{item}</li>)
+                            }
+                        </ul>
+                    </div>
+
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

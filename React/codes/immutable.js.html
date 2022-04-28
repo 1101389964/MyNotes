@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.2/immutable.js"></script>
+<script>
+    const im = Immutable;
+
+    const info = {
+        name: "AoZige",
+        age: 18,
+        hobbies: ["美女", "美食"],
+        home: {
+            address: "安徽",
+        }
+    }
+
+    //对象的拷贝用Map
+    const infoIM = im.Map(info);
+    const obj = infoIM;
+    const infoIM2 = infoIM.set('name', "澳子哥");
+    console.log(obj.get("name"));
+    console.log(infoIM2.get("name"));
+    console.log(infoIM.get("hobbies"));
+    console.log("///////////////////")
+
+    //数组的拷贝用List
+    const hobbies = ["美女", "美食", "hhh"];
+    const hobbyIM = im.List(hobbies);
+    const newHobbies = hobbyIM.set(0, "帅哥");
+    console.log(newHobbies.get(0));
+    console.log(hobbyIM.get(0));
+</script>
+
+</html>

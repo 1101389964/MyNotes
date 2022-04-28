@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super(); 1
+                this.state = {
+                    /* 1.这三种类型可以在jsx里面直接显示 */
+                    name: 'AoZige',//String
+                    year: 20,//number
+                    hobbies: ["码代码", "美女"],//Array
+
+                    /* 
+                    2.这三中类型不能在jsx里面显示，
+                    如果要显示可以调用相应的方法，toString
+                    null和undefined不能调用toString方法或者加'';
+                    */
+                    without: null,//null
+                    uncertainty: undefined,//undefined
+                    falg: true,//Boolean
+
+                    /* 3.对象不能作为子元素，否则会报错 */
+                    obj: {
+                        height: 188,
+                        phone: 'HuaWei'
+                    }
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        <ul>
+                            <li>String:{this.state.name}</li>
+                            <li>Number:{this.state.year}</li>
+                            <li>Array:{this.state.hobbies}</li>
+                            <li>null:{this.state.without}</li>
+                            <li>undefined:{this.state.uncertainty}</li>
+                            <li>Boolean{this.state.falg}</li>
+                            {/* <li>Object:{this.state.obj}</li> */}
+                        </ul>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

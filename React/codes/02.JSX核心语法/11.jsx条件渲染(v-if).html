@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    flag: true,
+                    show: "显示:",
+                }
+            }
+            render() {
+                const { flag, show } = this.state;
+                let welcome = null;
+                if (flag) {
+                    welcome = "欢迎回来";
+                }
+                else {
+                    welcome = "请先登录！";
+                }
+                return (
+                    <div>
+                        {/* 1.逻辑与条件判断 */}
+                        <span>{flag && show}</span>
+                        {/* 2.通过if判断 */}
+                        <span>{welcome}</span>
+                        {/* 3.三元运算符 */}
+                        <div> <button onClick={() => { this.checkout() }}>{flag ? "退出" : "登录"}</button> </div>
+                    </div>
+                )
+            }
+            checkout() {
+                //console.log(this);
+                this.setState({
+                    flag: !this.state.flag
+                })
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

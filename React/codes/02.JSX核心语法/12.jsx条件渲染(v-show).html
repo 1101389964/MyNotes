@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    flag: true
+                }
+            }
+            render() {
+                const { flag } = this.state;
+
+                return (
+                    <div>
+                        {/* 
+                            通过控制style中的display是值控制<h2></h2>标签的显示与隐藏，
+                            不会直接控制dom的添加和删除，性能相比v-if较高
+                        */}
+                        <h2 style={{ display: flag ? "block" : "none" }}>显示出来</h2>
+                        <button onClick={() => { this.checkout() }}>{flag ? "隐藏" : "显示"}</button>
+                    </div>
+                )
+            }
+            checkout() {
+                this.setState({
+                    flag: !this.state.flag
+                })
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

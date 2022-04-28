@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    function* fun() {
+        console.log("hello");
+        yield "generator";
+    }
+    const res1 = fun();//调用函数并不会有打印结果
+    console.log(res1.next());//会打印"hello"并会生成一个对象{value: "generator", done: false}
+    console.log(res1.next());//结果为undefined；{value: undefined, done: true}，
+    //fun为迭代器，每执行一次next都会总开始代码执行到yied，然后执行下一次next再执行到下一个yield，如果没有yield，则执行next为{value: undefined, done: true}
+
+    console.log("-------------------------------");
+    //generator和promise一起使用
+    function* bar() {
+        console.log("...");
+        const result = yield new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("测试二")
+            }, 1000);
+        })
+        console.log(result);
+    }
+
+    /* 
+        第一次next从console.log开始执行然后执行到赋值代码的时候并不会直接执行，
+        而是先执行赋值后面的yield代码，赋值代码是属于yield后面的代码，
+        必须在下一次next时才会被执行
+    */
+    const test2 = bar();
+    test2.next().value.then(res => {
+        console.log(res);
+        test2.next(res);//会把resolve里面的结果赋值给yeild之后的result
+    })
+</script>
+
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border: 1px solid #123;
+      /* 清除边框间距 */
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid #123;
+      padding: 10px 15px;
+    }
+
+    th {
+      background-color: bisque;
+    }
+
+    .price {
+      text-align: center;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+
+  </div>
+  <!-- 1.添加react依赖 -->
+  <script src="../00.依赖/react@17umdreact.development.js"></script>
+  <script src="../00.依赖/react-dom@17umdreact-dom.development.js"></script>
+  <script src="../00.依赖/babel-standalone@6babel.min.js"></script>
+
+  <script type="text/babel">
+    class App extends React.Component {
+      constructor() {
+        super();
+        this.state = {
+          books: [
+            {
+              name: '《三体：黑暗森林》',
+              data: '2008-5',
+              price: 42,
+              number: 965154,
+            },
+            {
+              name: '《平凡的世界》',
+              data: '1986-12',
+              price: 67,
+              number: 945641,
+            },
+            {
+              name: '《芳华》',
+              data: '2010-5',
+              price: 40,
+              number: 848587,
+            },
+            {
+              name: '《三国演义》',
+              data: '1378-1',
+              price: 50,
+              number: 1,
+            },
+          ]
+        }
+      }
+      /*
+       当书籍为空则显示“书籍为空”
+       所以把需要渲染的抽离出来，
+       在render里面条件判断之后再渲染
+       */
+      renderTip() {
+        return (<h2>书籍为空</h2>)
+      }
+      renderBooks() {
+        return (
+          <div>
+            <table>
+              <thead>
+                <tr>
+                  <th></th>
+                  <th>书籍名称</th>
+                  <th>出版日期</th>
+                  <th>价格</th>
+                  <th>购买数量</th>
+                  <th>操作</th>
+                </tr>
+              </thead>
+              <tbody>
+                {/* 通过对象渲染 */}
+                {this.state.books.map((item, index) => {
+                  return (
+                    <tr key={item.name}>
+                      <td >{index + 1}</td>
+                      <td>{item.name}</td>
+                      <td>{item.data}</td>
+                      <td>{item.price}</td>
+                      <td>
+                        <button disabled={item.number ? false : true} onClick={() => { this.change(index, -1) }}>-</button>
+                        <span className="price">{this.formatPrice(item.number)}</span>
+                        <button onClick={() => { this.change(index, 1) }}>+</button>
+                      </td>
+                      <td><button onClick={() => { this.remove(index) }}>移除</button></td>
+                    </tr>
+                  )
+                })}
+              </tbody>
+            </table>
+            <h2>总价：{this.total() + "￥"}</h2>
+          </div>
+        )
+      }
+      render() {
+        return this.state.books.length ? this.renderBooks() : this.renderTip();
+      }
+      formatPrice(num) {
+        if (typeof num != 'number') {
+          return 0;
+        }
+        return "￥" + parseInt(num).toFixed(2);//toFixed可以向小数点后面添加几个0
+      }
+      total() {
+        let sum = 0;
+        let books = this.state.books;
+        for (let k in books) {
+          sum += books[k].price * books[k].number;
+        }
+        return sum;
+      }
+      change(index, flag) {
+        /*
+        由于setState数据不可变性
+        把原来的books数组拷贝一份，进行改变，不在原有的基础上改变
+         */
+        let newArray = [...this.state.books];
+        newArray[index].number += parseInt(flag);
+        this.setState({
+          books: newArray,
+        })
+        //console.log(index);
+      }
+      remove(index) {
+        this.setState({
+          books: this.state.books.filter((item, indey) => index != indey)
+        })
+        if (this.state.books == []) {
+
+        }
+      }
+    }
+    ReactDOM.render(<App />, document.querySelector("#app"));
+  </script>
+</body>
+
+</html>

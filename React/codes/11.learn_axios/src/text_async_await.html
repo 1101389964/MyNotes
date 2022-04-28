@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+
+<script>
+    /* function test() {
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                resolve("hhh");
+            }, 1000)
+        })
+    }
+    async function action() {
+        await test().then(res => console.log(res));
+        console.log(1);
+    }
+    action(); */
+    function test() {
+        new Promise((resolve) => {
+            setTimeout(() => {
+                console.log("hhh");
+            }, 1000)
+        })
+    }
+    async function action() {
+        await new Promise((resolve) => {
+            setTimeout(() => {
+                console.log("hhh");
+            }, 1000)
+        });
+        console.log(1);
+    }
+    action();
+    /* function getSomething(n) {
+        return new Promise(resolve => {
+            // 模拟1s后返回数据
+            setTimeout(() => resolve(222), 1000);
+        });
+    } */
+
+    /* function requestSomething() {
+        console.log(111);
+        getSomething().then(res => console.log(res));
+        console.log(333);
+    }
+    requestSomething() */
+    /* async function requestSomething() {
+        console.log(111);
+        // 这时something会等到异步请求的结果回来后才进行赋值，同时不会执行之后的代码
+        const something = await getSomething();
+        console.log(something)
+        console.log(333);
+    }
+    requestSomething() */
+
+</script>
+
+</html>

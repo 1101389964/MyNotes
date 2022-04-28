@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #add {
+            margin: 0px 0 10px 20px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="../00.依赖/react@17umdreact.development.js"></script>
+    <script src="../00.依赖/react-dom@17umdreact-dom.development.js"></script>
+    <script src="../00.依赖/babel-standalone@6babel.min.js"></script>
+
+</body>
+
+<script type="text/babel">
+    class App extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                list: [
+                    {
+                        name: '韩信',
+                        year: 20,
+                    },
+                    {
+                        name: '百里',
+                        year: 18,
+                    },
+                    {
+                        name: '露娜',
+                        year: 24,
+                    }
+                ],
+            };
+            this.nameRef = React.createRef();
+            this.yearRef = React.createRef();
+        }
+        render() {
+            return (
+                <div>
+                    <h2>朋友列表</h2>
+                    <ul>
+                        {
+                            this.state.list.map(
+                                (item, index) => {
+                                    return (
+                                        <li key={index}>姓名:{item.name} 年龄:{item.year} <button onClick={() => { this.addYear(index) }}>年龄+1</button></li>
+                                    )
+                                }
+                            )
+                        }
+                    </ul>
+                    <div id='add'>
+                        姓名：
+                        <input id='name' type="text" ref={this.nameRef} />
+                        <br />
+                        年龄：
+                        <input id='year' type="number" ref={this.yearRef} />
+                        <button onClick={() => { this.submit() }}>确定</button>
+                    </div>
+                    <br />
+                    <button onClick={() => { this.addList() }}>添加新数据</button>
+                </div>
+            )
+        }
+
+        addYear(index) {
+            let newArry = [...this.state.list];//浅拷贝
+            newArry[index].year = Number(newArry[index].year);
+            newArry[index].year += 1;
+            this.setState({
+                list: newArry
+            })
+        }
+
+        addList() {
+            let add = document.querySelector('#add');
+            add.style.display = 'block';
+        }
+
+        submit() {
+            let nameContent = this.nameRef.current.value;
+            let yearContent = this.yearRef.current.value;
+            //console.log(nameContent);
+            let newObj = { name: nameContent, year: yearContent };
+            //let newArry = this.state.list;
+            //浅拷贝，执行shouldComponentUpdate时会返回false，因为他们在内存的指向是相同的，对比的时候也是相同的
+            let newArry = [...this.state.list];
+            /* 
+            展开运算符，可以实现浅拷贝但不同于上面的浅拷贝
+            展开运算法的浅拷贝是新创建一个数组，但是新数组里面的对象还是存放着原来数组对象的引用
+            所以在给新数组添加一个新对象时并不会影响原来对象，但改变新数组引用过来的对象，
+            也会影响到原来数组的对象。但shouldComponentUpdate对比原来的数组执行结果会不同return true
+            */
+            console.log(newArry === this.state.list);   //false 两个数组是不同数组
+            console.log(newArry[1] === this.state.list[1]); //true  两个数组的引用是相同的
+            newArry.push(newObj);
+            console.log(newArry);
+            console.log(this.state.list);
+            this.setState({
+                list: newArry
+            }, () => { this.nameRef.current.value = '', this.yearRef.current.value = '' })//清除input输入框里面的类容
+        }
+        shouldComponentUpdate(newProps, newState) {
+            if (this.state.list == newState.list) {
+                return false
+            }
+            return true
+        }
+    }
+    ReactDOM.render(<App />, app);
+</script>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    movies: ["钢铁侠", "美国队长", "雷神"]
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        <button onClick={this.showResult}>点击查看recat传递的参数</button>
+                        <ul>
+                            {/* 需求当点击下列序列时会产生这个序列的索引,并获取到react传递的event */}
+                            {this.state.movies.map((value, index, arry) => {
+                                return (
+                                    <li className="item"
+                                        onClick={(event) => { this.showIndex(index, event) }}>
+                                        {value}
+                                    </li>
+                                )
+                                {/*
+                                    在调用箭头函数的时候把react传递的event事件传入箭头函数的参数中，
+                                    在调用箭头函数的时候再传递event，就可以获取到event对象了
+                                */}
+                            })}
+                        </ul>
+                    </div>
+                )
+            }
+            showIndex(index, event) {
+                console.log(index, event);
+            }
+            showResult(value) {
+                /*
+                调用该函数的时候并没有传递参数，
+                但是console.log却有结果，
+                这是因为掉用showResult并不是我们调用的
+                而是react自己调用的，react在调用的时候会
+                调用apply,apply(undefined,value),
+                value指的就是这里打印的value；
+                 */
+                console.log(value);
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

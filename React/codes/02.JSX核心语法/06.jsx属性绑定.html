@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    title: "提示信息",
+                    //网易云图片地址
+                    migURL: 'http://p3.music.126.net/-Y4yyvlfx_W2CjLo0mEOwQ==/109951165875486814.jpg',
+                    baidu: 'https://www.baidu.com/'
+                }
+            }
+            render() {
+                const { title, migURL, baidu } = this.state;
+                //由于每次都要所以this.state,所以结构赋值出title,migURL方便下面代码
+
+                //格式化图片的函数
+                function getMigURL(migURL, size) {
+                    /* 
+                    migURL后面的参数?param=${size}y${size}为显示图片的大小
+                    {size}y{size}表示图片时多少size*sizepx大小的
+                    */
+                    return migURL + `?param=${size}y${size}`
+                }
+
+                return (
+                    <div>
+                        <h2 title={title}>触碰会有提示</h2>
+                        {/* 在jsx语法里面单标签必须要加/，否则会报错 */}
+                        <img src={getMigURL(migURL, 200)} alt="" />
+                        <a href={baidu} target='_blank'>百度</a>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

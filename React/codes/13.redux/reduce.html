@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arry = [1, 2, 3, 4, 5, 6];
+    let sum = arry.reduce((prev, cur, index, array) => {
+        console.log(prev, cur, index);
+        return prev + cur;
+    })
+    console.log(sum);
+
+    console.clear();
+    var maxCallback = (acc, cur) => { console.log(acc, cur); return Math.max(acc.x, cur.x) };
+    let result1 = [{ x: 2 }, { x: 22 }, { x: 42 }].reduce(maxCallback);
+    /* 当执行第一次循环后第一次acc就变成了数字，所以acc.x就为NaN */
+    console.log("result1", result1);
+    console.log("----------");
+    var maxCallback = (acc, cur) => { console.log(acc, cur); return Math.max(acc, cur.x) };
+    let result2 = [{ x: 2 }, { x: 22 }, { x: 42 }].reduce(maxCallback, 0);
+    /* reduce后面添加了一个initialValue默认为第一个值，就可以解决对象的累加问题 */
+    console.log("result2", result2);
+</script>
+
+</html>

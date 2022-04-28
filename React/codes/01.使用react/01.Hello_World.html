@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+
+    <!-- 添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <!-- crossorigin可以将远程引入的js文件的错误显示出来 -->
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <!-- 使用jsx必须在script中引入一个属性type="text/babel"才能被游览器解析 -->
+    <script type="text/babel">
+        //ReactDOM对象来自第二个script标签
+        //render(渲染的类容，挂在的对象)，把渲染的类容放到挂在的对象上面
+        //<h2></h2>:jsx代码
+        let message = "hello world";
+        ReactDOM.render(<h2>{message}</h2>, document.querySelector("#app"))
+        /* 这里相比于vue引入的是单括号 */
+    </script>
+</body>
+
+</html>

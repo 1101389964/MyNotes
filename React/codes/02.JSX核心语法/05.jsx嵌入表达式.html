@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+
+    <script type="text/babel">
+        class App extends React.Component {
+            constructor() {
+                super();
+                this.state = {
+                    firstName: 'Kobe',
+                    lastName: ' Bryant',
+                    year: 41,
+                    dead: 2020,
+                    falg: true,
+                }
+            }
+            render() {
+                return (
+                    <div>
+                        {/* 1.算术运算符 */}
+                        <h2>{this.state.firstName + ' ' + this.state.lastName}</h2>
+                        <h2>BirthdateYear:{this.state.dead - this.state.year}</h2>
+
+                        {/* 2.三元表达式 */}
+                        <h2>{this.state.falg ? "是一个伟人" : "是一个球星"}</h2>
+
+                        {/* 3.函数调用 */}
+                        <h2>{this.fun()}</h2>
+                    </div>
+                )
+            }
+            fun() {
+                console.log(this);//指向对象实例
+                return "函数被调用";
+            }
+        }
+        ReactDOM.render(<App />, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>

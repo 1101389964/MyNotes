@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="../00.依赖/react@17umdreact.development.js"></script>
+    <script src="../00.依赖/react-dom@17umdreact-dom.development.js"></script>
+    <script src="../00.依赖/babel-standalone@6babel.min.js"></script>
+
+</body>
+
+<script type="text/babel">
+    /* 
+        memo适用于函数组件的更新；当函数组件没有更新时就不会调用执行函数
+    */
+    const Header = React.memo(function Header() {
+        console.log("Header被调用");
+        return <div>header组件</div>;
+    })
+
+    const Main = React.memo(function Main() {
+        console.log("Main被调用");
+        return <div>main组件</div>;
+    })
+
+    const Footer = React.memo(function Footer() {
+        console.log("Footer被调用");
+        return <div>footer组件</div>;
+    })
+
+    class App extends React.Component {
+        constructor() {
+            super();
+            this.state = {
+                number: 0
+            }
+        }
+        render() {
+            return (
+                <div>
+                    <h2>当前计数：{this.state.number}</h2>
+                    <button onClick={() => { this.add() }}>+1</button>
+                    <Header />
+                    <Main />
+                    <Footer />
+                </div>
+            );
+        }
+        add() {
+            this.setState({
+                number: this.state.number + 1,
+            })
+        }
+    }
+
+    ReactDOM.render(<App />, document.querySelector("#app"));
+</script>
+
+</html>

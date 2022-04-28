@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+
+    </div>
+    <!-- 1.添加react依赖 -->
+    <script src="../00.依赖/react@17umdreact.development.js"></script>
+    <script src="../00.依赖/react-dom@17umdreact-dom.development.js"></script>
+    <script src="../00.依赖/babel-standalone@6babel.min.js"></script>
+
+    <script type="text/babel">
+        // const message = <h2>Use createElement create DOM</h2>; 
+        /* 上面的直接创建的jsx语法等价于下面的写法 */
+        const message = React.createElement("h2", null, "Use createElement create DOM");
+        /*
+        第一个参数为所传递的标签，第二个为相关的属性，
+        第三个参数为标签里面的内容,可能会有多个内容，但只用了一个参数去接收；
+        后面源码会解析到
+        */
+        ReactDOM.render(message, document.querySelector("#app"));
+    </script>
+</body>
+
+</html>
