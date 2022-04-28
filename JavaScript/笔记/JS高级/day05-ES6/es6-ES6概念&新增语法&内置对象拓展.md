@@ -154,15 +154,28 @@ ES6中允许从数组中提取值，按照对应位置，对变量赋值，对�
 #### 对象解构
 
 ```javascript
- let person = { name: 'zhangsan', age: 20 }; 
- let { name, age } = person;//name,age为变量,使用变量去匹配属性的名字，如果变量名匹配不到，就为undefined
- console.log(name); // 'zhangsan' 
- console.log(age); // 20
+// 直接解构 
+let person = { name: 'zhangsan', age: 20 }; 
+let { name, age } = person;//name,age为变量,使用变量去匹配属性的名字，如果变量名匹配不到，就为undefined
+console.log(name); // 'zhangsan' 
+console.log(age); // 20
 
- let {name: myName, age: myAge} = person;
- /*myName myAge 属于别名,用name去匹配对象name，当匹配到将name的值赋值给myName，匹配不到则为undefined*/
- console.log(myName); // 'zhangsan' 
- console.log(myAge); // 20
+// 重命名解构
+let {name: myName, age: myAge} = person;
+/*myName myAge 属于别名,用name去匹配对象name，当匹配到将name的值赋值给myName，匹配不到则为undefined*/
+console.log(myName); // 'zhangsan' 
+console.log(myAge); // 20
+
+// 默认值解构
+const person = {
+  age: 18,
+  height: 180,
+}
+/* 当解构有值是使用解构的值，没有值时使用默认值 */
+const {name = 'tqa', age = 20, height} = person;
+console.log(name, age, height); // tqa 18 180
+
+
 
 ```
 
