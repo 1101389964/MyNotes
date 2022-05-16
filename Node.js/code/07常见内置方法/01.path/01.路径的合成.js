@@ -1,6 +1,6 @@
 const path = require("path");
 
-const basePath = "../User/code";
+const basePath = "./User/code";
 const fileName = "背景渐变.html";
 
 //目标拼接两个路径，合成为一个路径；
@@ -9,7 +9,7 @@ const operationPath = basePath + "/" + fileName; //利用字符创拼接，但�
 
 const filePathOne = path.join(basePath, fileName); //join拼接
 
-const filePathTwo = path.resolve(basePath, fileName);
+const filePathTwo = path.resolve('../', fileName);
 /* 
   resolve拼接利用path模块合成新的路径；及时在不同系统中也会根据当前的系统来修改中间的连接符;
   resolve会判断拼接路径字符串中是否以/或./或../开头的路径
