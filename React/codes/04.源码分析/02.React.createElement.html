@@ -57,7 +57,7 @@
         该数组正好为3个div，然后三个div里面的children数组里面再存放对应自己的内容标签 
         正好对应了DOM结构，这个称为虚拟DOM，然后经过React.render渲染为HTML可显示的DOM树结构
         */
-        ReactDOM.render(useCreateElement, document.querySelector("#app"));
+        ReactDOM.render(useCreateElement, document.querySelector("#app"), () => { console.log('hhh') });
     </script>
 </body>
 

@@ -53,15 +53,23 @@
             console.log(this.state.message); */
         }
 
-        /* 在定时器中执行setState */
+        /* 在定时器或Promise.then中执行setState */
         textChange() {
-            setTimeout(() => {
+            // setTimeout(() => {
+            //     this.setState({
+            //         message: "你好 React"
+            //     })
+            //     /* 打印结果为"你好 React",同步执行*/
+            //     console.log(this.state.message);
+            // }, 1)
+            new Promise((resolve, reject) => {
+                resolve('hhhhh')
+            }).then(res => {
                 this.setState({
-                    message: "你好 React"
+                    message: res
                 })
-                /* 打印结果为"你好 React",同步执行*/
                 console.log(this.state.message);
-            }, 1)
+            })
         }
 
     }

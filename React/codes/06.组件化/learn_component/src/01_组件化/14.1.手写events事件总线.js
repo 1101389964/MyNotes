@@ -39,6 +39,7 @@ export default class events {
         那么该补码转化为无符号数时已经远远超出数组的范围,并不会删除队列中的方法
       */
       this.eventMap[type].splice(this.eventMap[type].indexOf(fun) >>> 0, 1);
+      // delete this.eventMap[type];
     }
   }
 }
