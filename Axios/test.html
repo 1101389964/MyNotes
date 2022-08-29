@@ -12,12 +12,22 @@
 
 </body>
 <script>
-  const app = (name, year) => {
-    this.name = name;
-    this.year = year;
-  }
-  const obj = new app('aozige', 21);
-  console.log(obj);
+var isHappy = function(n) {
+    const set = new Set();
+    let num = n, curNum = 0;
+    while(num !== 1 && !set.has(num)) {
+        set.add(num);
+        while(num > 0) {
+            curNum += Math.pow(num % 10, 2);
+            num = (num / 10) >> 0;
+        }
+        console.log('curNum = ', curNum, 'num = ', num);
+        num = curNum;
+        curNum = 0;
+    }
+    return num === 1;
+};
+console.log(isHappy(19));;
 </script>
 
 </html>
