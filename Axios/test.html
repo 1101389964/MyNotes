@@ -1,3 +1,11 @@
+<!--
+ * @Author: TQA 1101389964@qq.com
+ * @Date: 2022-08-27 12:28:47
+ * @LastEditors: TQA 1101389964@qq.com
+ * @LastEditTime: 2022-08-31 13:59:07
+ * @FilePath: \Notes\MyNotes\Axios\test.html
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+-->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,22 +20,64 @@
 
 </body>
 <script>
-var isHappy = function(n) {
-    const set = new Set();
-    let num = n, curNum = 0;
-    while(num !== 1 && !set.has(num)) {
-        set.add(num);
-        while(num > 0) {
-            curNum += Math.pow(num % 10, 2);
-            num = (num / 10) >> 0;
+const numbs = [6,1,2,7,9,3,4,5,10,8];
+
+// function Quick_Sort(arr, begin, end){
+//     if(begin >= end) return;
+//     const flag = arr[begin];
+//     let i = begin;
+//     let j = end;
+
+
+//     while(i < j){
+//         /* 
+//         由于是已右边为基准的，所以必须从左边开始， 
+//         如果从右边开始当遍历到 i = j 的位置可能当前的值并不是 <= flag 的值,
+//         但还是会进行交换。
+//         */
+//         while(arr[j] >= flag && j > i) {
+//             j--;
+//         }
+//         while(arr[i] <= flag && j > i) {
+//             i++;
+//         }
+//         // 交换
+//         const temp = arr[i];
+//         arr[i] = arr[j];
+//         arr[j] = temp;
+//     }
+//     // 与基准位置交换，左边全是 <= 基准，右边都是 >= 基准
+//     arr[begin] = arr[i];
+//     arr[i] = flag;
+
+//     Quick_Sort(arr, begin, i-1);
+//     Quick_Sort(arr, i+1, end);
+// }  
+
+function Quick_Sort(arr, start, end) {
+    if (start >= end) return;
+    const flag = arr[start];
+    let i = start, j = end;
+    while (i < j) {
+        while (arr[j] >= flag && i < j) {
+            j--;
         }
-        console.log('curNum = ', curNum, 'num = ', num);
-        num = curNum;
-        curNum = 0;
+        while (arr[i] <= flag && i < j) {
+            i++;
+        }
+        const temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp; 
     }
-    return num === 1;
-};
-console.log(isHappy(19));;
+    arr[start] = arr[i];
+    arr[i] = flag;
+    Quick_Sort(arr, start, i - 1);
+    Quick_Sort(arr, i + 1, end);
+}
+
+Quick_Sort(numbs, 0, numbs.length - 1);
+console.log(numbs);
+
 </script>
 
 </html>
