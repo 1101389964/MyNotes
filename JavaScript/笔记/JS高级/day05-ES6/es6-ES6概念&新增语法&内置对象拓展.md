@@ -42,23 +42,23 @@ console.log(a) // a is not defined
 
 **注意：**使用let关键字声明的变量才具有块级作用域，使用var声明的变量不具备块级作用域特性。
 
-#### 不存在变量提升
+#### 存在变量提升，但在定义变量前使用变量会报错
 
 ```javascript
-console.log(a); // a is not defined 
+console.log(a); // Cannot access 'a' before initialization
 let a = 20;
 ```
 
 #### 暂时性死区
 
-利用let声明的变量会绑定在这个块级作用域，不会受外界的影响
+**let、const关键字**声明的变量会**产生块级作用域**，如果变量在当前作用域中被创建之前被创建出来，由于此时还未完成语法绑定，如果我们访问或使用该变量，就会产生暂时性死区的问题，由此我们可以得知，**从变量的创建到语法绑定之间这一段空间，我们就可以理解为‘暂时性死区’**
 
 ```javascript
- var tmp = 123;
- if (true) { 
-     tmp = 'abc';
-     let tmp; 
- } 
+var tmp = 123;
+if (true) {
+  tmp = 'abc'; // ReferenceError: Cannot access 'tmp' before initialization
+  let tmp;
+} 
 ```
 
 #### 经典面试题

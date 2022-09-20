@@ -2,98 +2,313 @@
  * @Author: TQA 1101389964@qq.com
  * @Date: 2022-08-27 12:29:06
  * @LastEditors: TQA 1101389964@qq.com
- * @LastEditTime: 2022-09-11 21:57:26
+ * @LastEditTime: 2022-09-20 22:00:25
  * @FilePath: \Notes\面试准备\test.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <style>
+      #box p {
+        background-color: aqua;
+        display: none;
+      }
+      .wrap p {
+        background-color: red;
+      }
+    </style>
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-  <style>
-    .hhh {
-      height: 500px;
-      width: 1000px;
-    }
+  <body>
+    <!-- 同花顺 -->
+    <!-- <div style="display: inline;">div1</div>
+  <div style="display: inline-block;">div2</div>
+  <div style="display: block;float: left;">div3</div>
+  <div style="display: inline-block;">div4</div>
+  <div style="display: block;float: left;clear: both;">div5</div>
+  <div style="display: block;float: left;">div6</div> -->
+  </body>
 
-    #box {
-      display: inline-block;
-    }
-  </style>
-</head>
+  <script>
+    // var a = 1;
+    // let b = 1;
+    // console.log(window.a, window.b);
 
-<body>
-  <div class="wrap">
-    <div class="hhh"></div>
-    <!-- 小图与遮罩 -->
-    <div id="box">
-      <img
-        src="https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fcdn3.mm683.com%2Fimg%2Fm-bizhi%2F1561596464%2F1561596464-3.jpg&refer=http%3A%2F%2Fcdn3.mm683.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=jpeg?sec=1648798439&t=2f9a01d5513581eaaf4265e0129d9667"
-        alt="" width="432" height="768">
-    </div>
-  </div>
+    // var s = "hello world"
+    // console.log(
+    //   s.startsWith('world',6),'-',
+    //   s.endsWith('hello',5),'-',
+    //   s.includes('hello',6),'-',
+    //   'x'.padStart(4),'-',
+    //   'x'.padStart(4,'0') ,'-',
+    // );
 
-</body>
-
-<script>
-  /* var a = 1;
-  setTimeout(function() {
-    console.log(a++);
-  },0);
-  new Promise(function see(resolve) {
-    console.log(a++);
-    for (var i = 0; i < 1000; i++) {
-      resolve(a++);
-    }
-    console.log(a++);
-  }).then(e => {
-    console.log(e);
-  })
-  console.log(a++); */
-
-
-  // function A() {}
-  // A.prototype.x = 10;
-  // var a1 = new A();
-  // A.prototype = {x: 20, y : 30};
-  // var a2 = new A();
-  // console.log(a1.x, a1.y, a2.x, a2.y);
-
-  // let a = '11' * 3;
-  // let b = 'a8' * 3;
-  // let c = '8a' * 3;
-  // let d = parseFloat('8a');
-  // console.log(a, b, c, d);
-
-  function TreeNode(val, left, right) {
-    this.val = (val===undefined ? 0 : val)
-    this.left = (left===undefined ? null : left)
-    this.right = (right===undefined ? null : right)
-  }
-
-  var buildTree = function(inorder, postorder) {
-    function build(inorderStart, inorderEnd, postorderStart, postorderEnd) {
-        if (inorderStart > inorderEnd) {
-            return null;
+    /* var a = 1;
+      setTimeout(function() {
+        console.log(a++);
+      },0);
+      new Promise(function see(resolve) {
+        console.log(a++);
+        for (var i = 0; i < 1000; i++) {
+          resolve(a++);
         }
-        const current = postorder[postorderEnd];
-        console.log(current);
-        const index = inorder.indexOf(current);
-        const distance = postorderStart + index - inorderStart - 1;
-        const root = new TreeNode(current);
-        root.left = build(inorderStart, index - 1, postorderStart, distance);
-        root.right = build(index + 1, inorderEnd, distance + 1, postorderEnd - 1);
-        return root;
-    }   
-    return build(0, inorder.length - 1, 0, postorder.length - 1); 
-  }
+        console.log(a++);
+      }).then(e => {
+        console.log(e);
+      })
+      console.log(a++); */
 
-  console.log(buildTree([9,3,15,20,7], [9,15,7,20,3]));;
-</script>
+    // function A() {}
+    // A.prototype.x = 10;
+    // var a1 = new A();
+    // A.prototype = {x: 20, y : 30};
+    // var a2 = new A();
+    // console.log(a1.x, a1.y, a2.x, a2.y);
 
+    // let a = '11' * 3;
+    // let b = 'a8' * 3;
+    // let c = '8a' * 3;
+    // let d = parseFloat('8a');
+    // console.log(a, b, c, d);
+
+    // 第二次美团笔试，第一道编程题
+    const nums = [7, 3, 11, 5, 2]
+
+    function foo(nums) {
+      // 排序
+      nums.sort((a, b) => a - b)
+      // 结果
+      let res = Number.MAX_SAFE_INTEGER
+      for (let i = 0; i < nums.length; i++) {
+        let cur = 0
+        // 每次以nums[i]开始递增，累加差值
+        for (let j = nums[i], index = 0; index < nums.length; j++, index++) {
+          cur += Math.abs(nums[index] - j)
+        }
+        // 取最优解
+        res = Math.min(res, cur)
+      }
+      return res
+    }
+
+    // 第二次美团笔试，第二道编程题
+    /*
+    const [sumLen, oneLen, twoLen] = [5,2,3]
+    const ones = [3,4];
+    const twos = [2,5,1];
+    let res = 0;
+    function stack() {
+      this.stack = [];
+      this.stackMin = [];
+      this.push = function(num) {
+        if (!this.stack.length || this.min() >= num){
+          this.stackMin.push(num)
+        }
+        this.stack.push(num);
+      }
+      this.pop = function() {
+        const res = this.stack.pop();
+        if (res === this.min()) {
+          this.stackMin.pop();
+        }
+        return res;
+      }
+      this.top = function() {
+        return this.stack.length > 0 ? this.stack[this.stack.length - 1] : Number.MAX_SAFE_INTEGER;
+      }
+      this.min = function() {
+        return this.stackMin.length > 0 ? this.stackMin[this.stackMin.length - 1] : Number.MAX_SAFE_INTEGER;
+      }
+    }
+
+    const oneStack = new stack();
+    const twoStack = new stack();
+    ones.forEach(item => oneStack.push(item));
+    twos.forEach(item => twoStack.push(item));
+
+    while (oneStack.stack.length || twoStack.stack.length) {
+      const min = Math.min(oneStack.min(), twoStack.min());
+      if (min == oneStack.top() || min == twoStack.top()) {
+        if (min == oneStack.top()) {
+          oneStack.pop();
+        }else {
+          twoStack.pop();
+        }
+        res++;
+      }else {
+        if (min == oneStack.min()) {
+          while (min !== oneStack.top()) {
+            const cur = oneStack.pop();
+            twoStack.push(cur);
+            res++;
+          }
+        }else {
+          while (min !== twoStack.top()) {
+            const cur = twoStack.pop();
+            oneStack.push(cur);
+            res++;
+          }
+        }
+      }
+    } */
+
+    // 腾讯音乐笔试
+    var buildTree = function (preorder, inorder) {
+      if (preorder.length === 0) return null
+      const cur = preorder.shift()
+      const indexs = []
+      inorder.forEach((ele, i) => {
+        if (ele === cur) {
+          return i
+        }
+      })
+      if (indexs.length !== 1) {
+        const roots = []
+        indexs.forEach(index => {
+          const root = new TreeNode(cur)
+          root.left = buildTree(preorder.slice(0, index), inorder.slice(0, index))
+          root.right = buildTree(preorder.slice(index), inorder.slice(index + 1))
+          roots.push(root)
+        })
+        return roots
+      } else {
+        const root = new TreeNode(cur)
+        root.left = buildTree(preorder.slice(0, indexs[0]), inorder.slice(0, indexs[0]))
+        root.right = buildTree(preorder.slice(indexs[0]), inorder.slice(indexs[0] + 1))
+        return root
+      }
+    }
+
+    function TreeNode(val, left, right) {
+      this.val = val === undefined ? 0 : val
+      this.left = left === undefined ? null : left
+      this.right = right === undefined ? null : right
+    }
+
+    // var buildTree = function(preorder, inorder) {
+    //   if (preorder.length === 0) return null;
+    //   const cur = preorder.shift();
+    //   const index = inorder.indexOf(cur);
+    //   const root = new TreeNode(cur);
+    //   root.left = buildTree(preorder.slice(0, index), inorder.slice(0, index));
+    //   root.right = buildTree(preorder.slice(index), inorder.slice(index + 1));
+    //   return root;
+    // };
+
+    // const root = buildTree([1,1,2], [1,2,1]);
+    // console.log(root);
+
+    // 数组扁平化
+    const arr = [1, [2, 3, 4, 5], [6, 7, 8, 9, [10, 11, 12, [14, 15, 16]]]]
+    const newArr = []
+    // 一,递归
+    /* const getArr = (array) => {
+        array.forEach((item)=>{
+            // 如果遍历的元素不是一个数组 就把这个元素放到新数组中
+            // 反之就进行递归再次调用方法
+            Array.isArray(item) ? getArr(item) : newArr.push(item)
+        })
+    }
+    getArr(arr); */
+    // 迭代
+    /* function getArr(nums) {
+    	nums.forEach(ele => {
+        if (ele instanceof Array) {
+            getArr(ele);
+        }else {
+          newArr.push(ele);
+        }
+      })
+    }
+    getArr(arr); */
+
+    // join转为字符串，split转为数组，map字符串Number化
+    // console.log(arr.join(',').split(',').map(ele => parseInt(ele)));
+
+    // 浅拷贝-迭代
+    var obj = {
+      info: {
+        name: '张三'
+      },
+      age: 23
+    }
+
+    /* function shallow(obj) {
+          const res = {}
+          for (let key in obj) {
+            res[key] = obj[key]
+          }
+          return res
+        } */
+
+    function shallowCopy(obj) {
+      // assign将obj对象的属性浅合并到第一个参数中，对于多层对象，只是将对象的引用拷贝过来了。
+      const res = Object.assign({}, obj)
+      return res
+    }
+
+    // 深拷贝
+    // JSON
+    /* function deepClone(obj) {
+          return JSON.parse(JSON.stringify(obj))
+        } */
+
+    // 迭代+递归
+    /* function deepClone(origin, target) {
+      var target = target || {},
+        toStr = Object.prototype.toString,
+        isArr = '[object Array]'
+
+      for (var key in origin) {
+        // 排除原型链上的对象
+        if (origin.hasOwnProperty(key)) {
+          // 若属性的值为引用类型
+          if (typeof origin[key] === 'object' && origin[key] !== null) {
+            // 为数组还是对象，也可以使用 instanceof
+            target[key] = toStr.call(origin[key]) === isArr ? [] : {}
+            deepClone(origin[key], target[key])
+          } else {
+            target[key] = origin[key]
+          }
+        }
+      }
+
+      return target
+    } */
+    obj.info.height = 190
+
+    // for...in会遍历原型链上的对象，但是会遍历继承上面的对象么？
+    // for (let key in objs) {
+    //   console.log(key, ':', objs[key])
+    // }
+
+    function deepClone(origin, target) {
+      target = target === undefined ? {} : target
+
+      for (let key in origin) {
+        if (origin.hasOwnProperty(key)) {
+          if (typeof origin[key] === 'object' && origin[key] !== null) {
+            if (origin[key] instanceof Object) {
+              target[key] = {}
+              deepClone(origin[key], target[key])
+            } else {
+              target[key] = []
+              deepClone(origin[key], target[key])
+            }
+          } else {
+            target[key] = origin[key]
+          }
+        }
+      }
+
+      return target
+    }
+    console.log(deepClone(obj))
+  </script>
 </html>
