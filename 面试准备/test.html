@@ -2,7 +2,7 @@
  * @Author: TQA 1101389964@qq.com
  * @Date: 2022-08-27 12:29:06
  * @LastEditors: TQA 1101389964@qq.com
- * @LastEditTime: 2022-09-20 22:00:25
+ * @LastEditTime: 2022-09-30 15:59:36
  * @FilePath: \Notes\面试准备\test.html
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
 -->
@@ -27,12 +27,12 @@
 
   <body>
     <!-- 同花顺 -->
-    <!-- <div style="display: inline;">div1</div>
-  <div style="display: inline-block;">div2</div>
-  <div style="display: block;float: left;">div3</div>
-  <div style="display: inline-block;">div4</div>
-  <div style="display: block;float: left;clear: both;">div5</div>
-  <div style="display: block;float: left;">div6</div> -->
+    <div style="display: inline">div1</div>
+    <div style="display: inline-block">div2</div>
+    <div style="display: block; float: left">div3</div>
+    <div style="display: inline-block">div4</div>
+    <div style="display: block; float: left; clear: both">div5</div>
+    <div style="display: block; float: left">div6</div>
   </body>
 
   <script>
@@ -281,7 +281,6 @@
 
       return target
     } */
-    obj.info.height = 190
 
     // for...in会遍历原型链上的对象，但是会遍历继承上面的对象么？
     // for (let key in objs) {
@@ -309,6 +308,87 @@
 
       return target
     }
-    console.log(deepClone(obj))
+
+    // 单词
+    const words = [
+      'aerial',
+      'fabric',
+      'routine',
+      'discipline',
+      'professional',
+      'weave',
+      'potential',
+      'stiff',
+      'confidence',
+      'accord',
+      'capture',
+      'alliance',
+      'decade',
+      'fascinate',
+      'alliance',
+      'persist',
+      'panel',
+      'investigate',
+      'inevitable',
+      'evitable',
+      'organic',
+      'detect',
+      'detective',
+      'concentration',
+      'exposure',
+      'expose',
+      'lease',
+      'seal',
+      'vital',
+      'virtual',
+      'commitee',
+      'prompt',
+      'dominate',
+      'generate',
+      'bearing',
+      'routine',
+      'embrace',
+      'persist',
+      'yield',
+      'constact',
+      'ethnic',
+      'resist',
+      'relevant',
+      'craft'
+    ]
+    const wordsIndex = (Math.random() * words.length) >> 0
+    console.log(words[wordsIndex])
+
+    // fetch('http://123.207.32.32:9001/search?keyword=海阔天空').then(res => {
+    //   console.log(res)
+    // })
+    // .then(res => {
+    //   console.log(res)
+    // })
+    // .then(data => console.log(data))
+
+    //防抖
+    /* function debouncer(fun, later) {
+      let timer = null
+      return function () {
+        const args = arguments
+        if (timer) clearTimeout(timer)
+        timer = setTimeout(() => {
+          fun.apply(this, args)
+        }, later)
+      }
+    } */
+    // 节流
+    /* function randomChangeColour(fun, later) {
+      let timer = null
+      return function () {
+        if (timer) return
+        const args = arguments
+        timer = setTimeout(() => {
+          fun.call(this, args)
+          timer = null
+        }, later)
+      }
+    } */
   </script>
 </html>

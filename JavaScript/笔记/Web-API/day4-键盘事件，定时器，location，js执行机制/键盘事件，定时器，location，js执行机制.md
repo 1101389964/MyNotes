@@ -69,7 +69,7 @@
             if (e.keyCode === 65) {
                 alert('您按下的a键');
             } else {
-                alert('您没有按下a键')
+                alert('您没有按下a键');
             }
         })
         document.addEventListener('keypress', function(e) {

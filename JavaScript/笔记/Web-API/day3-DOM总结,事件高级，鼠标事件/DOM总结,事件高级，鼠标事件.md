@@ -198,7 +198,7 @@ node.removeChild() 方法从 node节点中**删除一个子节点**，返回删�
 
         // 2. innerHTML 创建元素
         var inner = document.querySelector('.inner');
-         for (var i = 0; i <= 100; i++) {
+        for (var i = 0; i <= 100; i++) {
              inner.innerHTML += '<a href="#">百度</a>'
          }
         var arr = [];
