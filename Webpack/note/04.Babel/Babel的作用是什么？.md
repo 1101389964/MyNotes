@@ -20,11 +20,11 @@
   * --out-dir：指定要输出的文件夹dist；
   * **`npx babel src --out-dir dist`**
 * 比如我们需要转换箭头函数，那么我们就可以使用箭头函数转换相关的插件：
-  * **`npm install @babel/plugin-transform-arrow-functions -D`**arrow-functions代表箭头函数
+  * **`npm install @babel/plugin-transform-arrow-functions -D`**，arrow-functions代表箭头函数
   * **`npx babel src --out-dir dist --plugins=@babel/plugin-transform-arrow-functions`**打包时添加相关的插件；
 * 查看转换后的结果：**我们会发现 const 并没有转成 var**，这是因为 **plugin-transform-arrow-functions**，并没有提供这样的功能；
-  * 我们需要使用 plugin-transform-block-scoping 来完成这样的功能；
-  * `npm install @babel/plugin-transform-block-scoping -D`block-scoping表示块级作用域
+  * 我们需要使用 `plugin-transform-block-scoping` 来完成这样的功能；
+  * `npm install @babel/plugin-transform-block-scoping -D`，block-scoping表示块级作用域
   * `npx babel src --out-dir dist --plugins=@babel/plugin-transform-block-scoping ,@babel/plugin-transform-arrow-functions`
 
 ## Babel的预设preset
@@ -78,8 +78,6 @@
         ],
       },
     ```
-
-
 
 ## babel-preset
 
