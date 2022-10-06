@@ -108,7 +108,7 @@ plugins:[
 ]
 ```
 
-## 
+
 
 ## Scope Hoisting
 
@@ -130,7 +130,7 @@ plugins:[
     const webpack = require('webpack');
     
     plugins:[
-        new webpack.
+        new webpack.optimize.ModuleConcatenationPlugin()
     ]
     ```
 
@@ -170,9 +170,9 @@ plugins:[
 **配置usedExport**:
 
 ```js
-//webpack.config.js中的optimization的usedExport属性配置为true
+// webpack.config.js中的optimization的usedExport属性配置为true
 optimization: {
-    usedExports: true, //会用魔法注释标记导出的模块中哪些未被使用
+    usedExports: true, // 会用魔法注释标记导出的模块中哪些未被使用
     }
 ```
 
@@ -181,7 +181,7 @@ optimization: {
 * 在usedExports设置为true时，会有一段注释：`unused harmony export none`
 * 这段注释的意义是什么呢？**告知Terser在优化时，可以删除掉这段代码**；
 
-* 这个时候，我们讲 minimize设置true： 
+* 这个时候，我们将optimization.minimize设置true： 
   * usedExports设置为false时，mul函数没有被移除掉； 
   * usedExports设置为true时，mul函数有被移除掉； 
 * 所以，**usedExports实现Tree Shaking是结合Terser来完成的。**
@@ -190,21 +190,21 @@ optimization: {
 
 ## sideEffects
 
-当usedExports结合Terser删掉未使用的代码时，虽然删除了未使用的代码，但是还是有引用该模块，只是模块里面的内容为空。
+当usedExports结合Terser删掉未使用的代码时，虽然删除了未使用的代码，**但是还是有引用该模块，只是模块里面的内容为空**。
 sideEffects的作用就是把该引用也删掉，即只要是未使用的模块都不会显示。
 
 * sideEffects用于告知webpack compiler哪些模块时有副作用的：
   * 副作用的意思是这里面的代码有执行一些特殊的任务，不能仅仅通过export来判断这段代码的意义；
 
-* 在package.json中设置sideEffects的值： 
-  * 如果我们将sideEffects设置为false，就是告知webpack可以安全的删除未用到的exports； 
+* 在**package.json中设置sideEffects的值**： 
+  * **如果我们将sideEffects设置为false，就是告知webpack可以安全的删除未用到的exports**； 
   * 如果有一些我们希望保留，可以设置为数组；
 * 比如当**sideEffects设置为false**我们有一个**format.js、style.css**文件： <br>
   * `"sideEffects": false`
   * **该文件在导入时没有使用任何的变量来接受；** 
   * **那么打包后的文件，不会保留format.js、style.css相关的任何代码；**
 * 如果需要保留**format.js、style.css**，可以设置为数组的形式<br>![image-20211201215449982](image-20211201215449982.png)
-* 但是在开发中我们基本都会写没有副作用的模块，所以sideEffects就只有一个css文件了。就显得很多余，可以在配置css-loader地方单独配置,`sideEffects: true`,让css保留<br>![image-20211201215831373](image-20211201215831373.png)
+* 但是在开发中我们基本都会写没有副作用的模块，所以sideEffects就只有一个css文件了。就显得很多余，**可以在配置css-loader地方单独配置,`sideEffects: true`,让css保留**<br>![image-20211201215831373](image-20211201215831373.png)
 
 
 
