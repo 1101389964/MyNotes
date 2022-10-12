@@ -78,23 +78,23 @@
     // console.log(a, b, c, d);
 
     // 第二次美团笔试，第一道编程题
-    const nums = [7, 3, 11, 5, 2]
+    const nums = [7, 3, 11, 5, 2];
 
     function foo(nums) {
       // 排序
-      nums.sort((a, b) => a - b)
+      nums.sort((a, b) => a - b);
       // 结果
-      let res = Number.MAX_SAFE_INTEGER
+      let res = Number.MAX_SAFE_INTEGER;
       for (let i = 0; i < nums.length; i++) {
-        let cur = 0
+        let cur = 0;
         // 每次以nums[i]开始递增，累加差值
         for (let j = nums[i], index = 0; index < nums.length; j++, index++) {
-          cur += Math.abs(nums[index] - j)
+          cur += Math.abs(nums[index] - j);
         }
         // 取最优解
-        res = Math.min(res, cur)
+        res = Math.min(res, cur);
       }
-      return res
+      return res;
     }
 
     // 第二次美团笔试，第二道编程题
@@ -160,35 +160,35 @@
 
     // 腾讯音乐笔试
     var buildTree = function (preorder, inorder) {
-      if (preorder.length === 0) return null
-      const cur = preorder.shift()
-      const indexs = []
+      if (preorder.length === 0) return null;
+      const cur = preorder.shift();
+      const indexs = [];
       inorder.forEach((ele, i) => {
         if (ele === cur) {
-          return i
+          return i;
         }
-      })
+      });
       if (indexs.length !== 1) {
-        const roots = []
+        const roots = [];
         indexs.forEach(index => {
-          const root = new TreeNode(cur)
-          root.left = buildTree(preorder.slice(0, index), inorder.slice(0, index))
-          root.right = buildTree(preorder.slice(index), inorder.slice(index + 1))
-          roots.push(root)
-        })
-        return roots
+          const root = new TreeNode(cur);
+          root.left = buildTree(preorder.slice(0, index), inorder.slice(0, index));
+          root.right = buildTree(preorder.slice(index), inorder.slice(index + 1));
+          roots.push(root);
+        });
+        return roots;
       } else {
-        const root = new TreeNode(cur)
-        root.left = buildTree(preorder.slice(0, indexs[0]), inorder.slice(0, indexs[0]))
-        root.right = buildTree(preorder.slice(indexs[0]), inorder.slice(indexs[0] + 1))
-        return root
+        const root = new TreeNode(cur);
+        root.left = buildTree(preorder.slice(0, indexs[0]), inorder.slice(0, indexs[0]));
+        root.right = buildTree(preorder.slice(indexs[0]), inorder.slice(indexs[0] + 1));
+        return root;
       }
-    }
+    };
 
     function TreeNode(val, left, right) {
-      this.val = val === undefined ? 0 : val
-      this.left = left === undefined ? null : left
-      this.right = right === undefined ? null : right
+      this.val = val === undefined ? 0 : val;
+      this.left = left === undefined ? null : left;
+      this.right = right === undefined ? null : right;
     }
 
     // var buildTree = function(preorder, inorder) {
@@ -205,8 +205,8 @@
     // console.log(root);
 
     // 数组扁平化
-    const arr = [1, [2, 3, 4, 5], [6, 7, 8, 9, [10, 11, 12, [14, 15, 16]]]]
-    const newArr = []
+    const arr = [1, [2, 3, 4, 5], [6, 7, 8, 9, [10, 11, 12, [14, 15, 16]]]];
+    const newArr = [];
     // 一,递归
     /* const getArr = (array) => {
         array.forEach((item)=>{
@@ -237,7 +237,7 @@
         name: '张三'
       },
       age: 23
-    }
+    };
 
     /* function shallow(obj) {
           const res = {}
@@ -249,8 +249,8 @@
 
     function shallowCopy(obj) {
       // assign将obj对象的属性浅合并到第一个参数中，对于多层对象，只是将对象的引用拷贝过来了。
-      const res = Object.assign({}, obj)
-      return res
+      const res = Object.assign({}, obj);
+      return res;
     }
 
     // 深拷贝
@@ -288,25 +288,25 @@
     // }
 
     function deepClone(origin, target) {
-      target = target === undefined ? {} : target
+      target = target === undefined ? {} : target;
 
       for (let key in origin) {
         if (origin.hasOwnProperty(key)) {
           if (typeof origin[key] === 'object' && origin[key] !== null) {
             if (origin[key] instanceof Object) {
-              target[key] = {}
-              deepClone(origin[key], target[key])
+              target[key] = {};
+              deepClone(origin[key], target[key]);
             } else {
-              target[key] = []
-              deepClone(origin[key], target[key])
+              target[key] = [];
+              deepClone(origin[key], target[key]);
             }
           } else {
-            target[key] = origin[key]
+            target[key] = origin[key];
           }
         }
       }
 
-      return target
+      return target;
     }
 
     // 单词
@@ -315,26 +315,37 @@
       'accord',
       'amid',
       'alliance',
+      'approval',
+      'appeal**',
 
       'bearing',
       'bearing',
       'bound',
+      'bounce',
       'blend',
 
+      'cast',
       'capture',
+      'collective',
       'concentration',
       'confidence',
       'constract',
       'constant',
       'contrast',
       'commitee',
+      'compel',
+      'sompromise',
       'craft',
+      'cite',
 
       'decade',
       'delicate',
+      'despite',
+      'describe',
       'detective',
       'detect',
       'discipline',
+      'distribute',
       'dominate',
       'domestic',
 
@@ -357,10 +368,12 @@
       'exposure',
       'expose',
 
+      'facility',
       'fabric',
       'fascinate',
       'frank',
 
+      'hail',
       'highlight',
 
       'inevitable',
@@ -368,25 +381,43 @@
       'investment',
       'insight',
       'innocent',
+      'interpretation',
 
       'lease',
       'leisure',
 
+      'maintain',
+
       'seal',
       'scale**',
+      'scatter',
       'sufficient**',
+      'substitute**',
+      'suspend**',
+      'sophisticated',
+      'slightly',
+      'spot',
+      'spite',
+      'stock',
+      'striking***',
+      'stiff',
 
       'vital',
       'virtual',
 
       'generate',
       'generate',
+      'grant',
+      'grief',
       'guarantee',
 
       'reside',
       'resist',
+      'reserve',
       'represent',
       'relevant',
+      'revelation',
+      'representation',
       'retail',
       'routine',
       'routine',
@@ -406,19 +437,20 @@
       'professional',
       'prompt',
 
-      'spot',
-      'spite',
-      'striking***',
-      'stiff',
-
+      'terrible',
+      'terrorism',
+      'territory**',
       'tremendous',
+
+      'vary',
+      'variation**',
       'vertical',
       'vessel',
       'weave',
       'yield'
-    ]
-    const wordsIndex = (Math.random() * words.length) >> 0
-    console.log(words[wordsIndex])
+    ];
+    const wordsIndex = (Math.random() * words.length) >> 0;
+    console.log(words[wordsIndex]);
 
     // fetch('http://123.207.32.32:9001/search?keyword=海阔天空').then(res => {
     //   console.log(res)

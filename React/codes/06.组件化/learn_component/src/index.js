@@ -6,9 +6,9 @@
  * @Description: In User Settings Edit
  * @FilePath: \06.组件化\learn_component\src\index.js
  */
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./01_组件化/12.跨组件通信-context";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import App from './01_组件化/03.组件的生命周期';
 //import "./style.css";
 
-ReactDOM.render(<App />, document.getElementById("root"));
+ReactDOM.render(<App />, document.getElementById('root'));
