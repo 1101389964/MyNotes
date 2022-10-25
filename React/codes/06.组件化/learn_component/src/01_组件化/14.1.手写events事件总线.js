@@ -3,7 +3,18 @@ export default class events {
     this.typesQueue = {};
   }
 
-  emit(type) {
+  // good
+  emit(type, ...props) {
+    if (this.queue.hasOwnProperty(type)) {
+      this.queue[type].forEach(ele => {
+        ele(...props);
+      });
+      return true;
+    }
+  }
+
+  // bad
+  /* emit(type) {
     if (this.typesQueue.hasOwnProperty(type)) {
       if (arguments.length === 2) {
         this.typesQueue[type].forEach((fun) => {
@@ -18,11 +29,11 @@ export default class events {
       }
       return true;
     }
-  }
+  } */
 
   addListener(type, fun) {
-    if (typeof fun !== "function") {
-      throw new Error("第二个参数应为函数类型");
+    if (typeof fun !== 'function') {
+      throw new Error('第二个参数应为函数类型');
     }
     //如果该监听类型不存在则建立该消息队列
     if (!this.typesQueue.hasOwnProperty(type)) {

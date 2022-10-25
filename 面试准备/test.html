@@ -317,35 +317,49 @@
       'alliance',
       'approval',
       'appeal**',
+      'assess',
 
-      'bearing',
+      'bearing 关系，影响',
       'bearing',
       'bound',
       'bounce',
       'blend',
 
       'cast',
+      'calendar',
+      'candidate',
       'capture',
       'collective',
       'concentration',
+      'council committee',
       'confidence',
-      'constract',
+      'construct',
       'constant',
+      'considerable**',
       'contrast',
-      'commitee',
+      'consult',
+      'committee',
       'compel',
-      'sompromise',
+      'complicate',
+      'compromise',
+      'comtemporary',
+      'cultivate',
+      'clue',
       'craft',
+      'crew',
       'cite',
 
       'decade',
+      'decent',
       'delicate',
       'despite',
       'describe',
       'detective',
       'detect',
+      'decent',
       'discipline',
       'distribute',
+      'dominant',
       'dominate',
       'domestic',
 
@@ -353,9 +367,13 @@
       'endure',
       'ensure',
       'ensure',
+      'encounter',
       'embrace',
       'embrace',
+      'emission',
+      'episode**',
       'exhibit',
+      'exceed',
       'exclude',
       'expectation',
       'except',
@@ -372,21 +390,27 @@
       'fabric',
       'fascinate',
       'frank',
+      'folk',
+      'forge',
+      'flock',
 
       'hail',
       'highlight',
 
       'inevitable',
-      'investigate',
       'investment',
+      'investigate',
       'insight',
       'innocent',
+      'initiative**',
       'interpretation',
 
       'lease',
       'leisure',
 
       'maintain',
+      'military',
+      'mineral',
 
       'seal',
       'scale**',
@@ -395,13 +419,15 @@
       'substitute**',
       'suspend**',
       'sophisticated',
-      'slightly',
+      'slightly**',
       'spot',
       'spite',
       'stock',
       'striking***',
       'stiff',
+      'scout',
 
+      'vateran',
       'vital',
       'virtual',
 
@@ -409,20 +435,27 @@
       'generate',
       'grant',
       'grief',
+      'grind',
+      'given',
       'guarantee',
 
+      'right 多个意思',
       'reside',
       'resist',
       'reserve',
+      'reverse',
       'represent',
       'relevant',
       'revelation',
-      'representation',
+      'represent',
+      'representation** 描述，代表',
+      'representative 代表，代理人',
       'retail',
       'routine',
       'routine',
 
       'organic',
+      'orchestra',
       'overwhelm',
       'overwhelming',
 
@@ -431,22 +464,32 @@
       'pack',
       'persist',
       'persist',
+      'pledge',
       'potential',
+      'priority',
       'precious',
       'previous',
       'professional',
+      'priority 优先权、优先的事**',
       'prompt',
+      'pitch',
 
       'terrible',
+      'terrorist',
       'terrorism',
       'territory**',
       'tremendous',
+      'transform',
+      'transmit',
 
       'vary',
       'variation**',
       'vertical',
+      'virtual',
       'vessel',
       'weave',
+      'written',
+      'writing',
       'yield'
     ];
     const wordsIndex = (Math.random() * words.length) >> 0;
@@ -483,5 +526,35 @@
         }, later)
       }
     } */
+    /* var F = function () {};
+    Object.prototype.a = function () {
+      console.log('a');
+    };
+    Function.prototype.b = function () {
+      console.log('b');
+    };
+    const f = new F();
+    f.a();
+    f.b();
+    F.a();
+    F.b(); */
+
+    function deepCopy(origin) {
+      if (typeof origin !== 'object') return origin;
+      const current = origin instanceof Array ? [] : {};
+      for (let key in origin) {
+        // 排除原型链上的属性和方法
+        if (origin.hasOwnProperty(key)) {
+          if (typeof origin[key] === 'object' && origin !== null) {
+            current[key] = deepCopy(origin[key]);
+          } else {
+            current[key] = origin[key];
+          }
+        }
+      }
+      return current;
+    }
+
+    objs.info.name = 'dasds';
   </script>
 </html>

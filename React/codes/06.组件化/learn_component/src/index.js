@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './01_组件化/03.组件的生命周期';
+import App from './01_组件化/02.render的返回值';
 //import "./style.css";
 
 ReactDOM.render(<App />, document.getElementById('root'));
