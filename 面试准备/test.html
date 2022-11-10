@@ -13,13 +13,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
     <style>
       #box p {
         background-color: aqua;
         display: none;
       }
       .wrap p {
+        background-color: red;
+      }
+      .father {
+        display: flex;
+        justify-content: space-between;
+      }
+      .father div {
+        flex-basis: 200px;
+        background-color: blue;
+        transform: scale(50%, 50%);
+        font-size: 12px;
+      }
+      .father div::after {
+        content: 'dddd';
+        width: 100px;
+        height: 200px;
         background-color: red;
       }
     </style>
@@ -33,6 +49,15 @@
     <div style="display: inline-block">div4</div>
     <div style="display: block; float: left; clear: both">div5</div>
     <div style="display: block; float: left">div6</div>
+    <div>11</div>
+    <div class="father">
+      <div>1</div>
+      <div>2</div>
+      <div>3</div>
+      <div>4</div>
+      <div>5</div>
+      <div>6</div>
+    </div>
   </body>
 
   <script>
@@ -317,37 +342,52 @@
       'alliance',
       'approval',
       'appeal**',
+      'architect',
       'assess',
+      'attachment',
 
       'bearing 关系，影响',
       'bearing',
       'bound',
       'bounce',
       'blend',
+      'burst',
+      'boast',
 
       'cast',
+      'cable',
       'calendar',
       'candidate',
       'capture',
+      'cereal',
       'collective',
       'concentration',
       'council committee',
+      'confine refine',
       'confidence',
       'construct',
       'constant',
       'considerable**',
       'contrast',
+      'concrete',
+      'concerning',
+      'content',
       'consult',
       'committee',
       'compel',
       'complicate',
       'compromise',
       'comtemporary',
+      'charm',
       'cultivate',
       'clue',
       'craft',
       'crew',
+      'crystal',
+      'crucial**',
       'cite',
+      'clip',
+      'clips',
 
       'decade',
       'decent',
@@ -357,12 +397,18 @@
       'detective',
       'detect',
       'decent',
+      'distress',
       'discipline',
       'distribute',
       'dominant',
       'dominate',
       'domestic',
 
+      'elevate',
+      'elevation',
+      'evolute',
+      'evalution',
+      'evalutation',
       'endure',
       'endure',
       'ensure',
@@ -380,6 +426,7 @@
       'exceptional',
       'estimate',
       'estimate**',
+      'essential**',
       'ethnic',
       'ethnic',
       'evitable',
@@ -392,29 +439,39 @@
       'frank',
       'folk',
       'forge',
+      'fossil',
       'flock',
 
       'hail',
+      'heal',
       'highlight',
 
+      'incline',
       'inevitable',
       'investment',
       'investigate',
+      'ingredient**',
       'insight',
       'innocent',
+      'ingredient**',
       'initiative**',
       'interpretation',
+      'implement',
 
       'lease',
       'leisure',
 
+      'marvel',
       'maintain',
+      'maximum',
       'military',
       'mineral',
 
       'seal',
       'scale**',
       'scatter',
+      'scandal',
+      'scout',
       'sufficient**',
       'substitute**',
       'suspend**',
@@ -425,9 +482,12 @@
       'stock',
       'striking***',
       'stiff',
-      'scout',
+      'snack',
+      'sole',
+      'speculate',
 
       'vateran',
+      'vessel',
       'vital',
       'virtual',
 
@@ -438,6 +498,7 @@
       'grind',
       'given',
       'guarantee',
+      'glow**',
 
       'right 多个意思',
       'reside',
@@ -446,7 +507,7 @@
       'reverse',
       'represent',
       'relevant',
-      'revelation',
+      'revelation**',
       'represent',
       'representation** 描述，代表',
       'representative 代表，代理人',
@@ -462,16 +523,21 @@
       'panel',
       'panel',
       'pack',
+      'particularly**',
+      'participation',
       'persist',
       'persist',
-      'pledge',
+      'perception**',
+      'pledge**',
       'potential',
       'priority',
       'precious',
       'previous',
       'professional',
+      'prospect**',
       'priority 优先权、优先的事**',
       'prompt',
+      'prominent',
       'pitch',
 
       'terrible',
@@ -484,9 +550,10 @@
 
       'vary',
       'variation**',
+      +'veteran',
+      'vessel',
       'vertical',
       'virtual',
-      'vessel',
       'weave',
       'written',
       'writing',
@@ -538,23 +605,24 @@
     f.b();
     F.a();
     F.b(); */
-
-    function deepCopy(origin) {
-      if (typeof origin !== 'object') return origin;
-      const current = origin instanceof Array ? [] : {};
-      for (let key in origin) {
-        // 排除原型链上的属性和方法
-        if (origin.hasOwnProperty(key)) {
-          if (typeof origin[key] === 'object' && origin !== null) {
-            current[key] = deepCopy(origin[key]);
-          } else {
-            current[key] = origin[key];
-          }
-        }
-      }
-      return current;
-    }
-
-    objs.info.name = 'dasds';
+    /**
+     * @param {String}  msg    错误信息
+     * @param {String}  url    出错文件
+     * @param {Number}  row    行号
+     * @param {Number}  col    列号
+     * @param {Object}  error  错误详细信息
+     */
+    window.onerror = function (msg, url, row, col, error) {
+      console.log('我知道错误了');
+      console.log({
+        msg,
+        url,
+        row,
+        col,
+        error
+      });
+      return true;
+    };
+    error;
   </script>
 </html>

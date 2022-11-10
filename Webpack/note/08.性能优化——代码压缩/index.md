@@ -227,12 +227,12 @@ const glob = require("glob");
 module.exports = {
   plugins: [
     new PurgecssPlugin({
-      //通过glob.sync匹配src下的所有文件夹的所有文件
+      // 通过glob.sync匹配src下的所有文件夹的所有文件
       paths: glob.sync(`${path.resolve(__dirname, "./src")}/**/*`, {
-        nodir: true, //nodir表面匹配的是文件
-      }), //哪些目录下的文件需要被treeShaking
+        nodir: true, // nodir表面匹配的是文件
+      }), // 哪些目录下的文件需要被treeShaking
       safelist: function () {
-        //表示一下标签名或者类名或者id是安全的不需要treeShaking
+        // 表示一下标签名或者类名或者id是安全的不需要treeShaking
         return {
           standard: ["body", "html"],
         };
