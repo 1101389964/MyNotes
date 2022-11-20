@@ -368,11 +368,14 @@
       'construct',
       'constant',
       'considerable**',
+      'consist',
+      'consistent',
       'contrast',
       'concrete',
       'concerning',
       'content',
-      'consult',
+      'container',
+      'consult**',
       'committee',
       'compel',
       'complicate',
@@ -548,9 +551,11 @@
       'transform',
       'transmit',
 
+      'utility',
+
       'vary',
       'variation**',
-      +'veteran',
+      'veteran',
       'vessel',
       'vertical',
       'virtual',
@@ -612,17 +617,25 @@
      * @param {Number}  col    列号
      * @param {Object}  error  错误详细信息
      */
-    window.onerror = function (msg, url, row, col, error) {
-      console.log('我知道错误了');
-      console.log({
-        msg,
-        url,
-        row,
-        col,
-        error
-      });
-      return true;
-    };
-    error;
+    // window.onerror = function (msg, url, row, col, error) {
+    //   console.log('我知道错误了');
+    //   console.log({
+    //     msg,
+    //     url,
+    //     row,
+    //     col,
+    //     error
+    //   });
+    //   return true;
+    // };
+    // error;
+
+    var Color;
+    (function foo(Color) {
+      Color[(Color['red'] = 0)] = 'red';
+      Color[(Color['blue'] = 1)] = 'blue';
+      Color[(Color['green'] = 2)] = 'green';
+    })(Color || (Color = {}));
+    console.log(Color);
   </script>
 </html>
