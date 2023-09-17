@@ -17,7 +17,7 @@ const creteSagaMiddleware = createSagaMiddleware(); //createSagaMiddleware为函
 const storeEnhancer = applyMiddleware(thunkMiddleware, creteSagaMiddleware);
 
 //composeEnhancers函数，把storeEnhancer传递给composeEnhancers函数可以在浏览器看到reudx数据的状态信息
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__() || compose;
 
 const store = createStore(reducer, composeEnhancers(storeEnhancer));
 

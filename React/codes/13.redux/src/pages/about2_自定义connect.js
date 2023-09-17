@@ -27,9 +27,9 @@ function About(props) {
   );
 }
 
-const mapStateToProps = function (state) {
+const mapStateToProps = function (getState) {
   return {
-    counter: state.counter,
+    counter: getState.counter,
   };
 };
 

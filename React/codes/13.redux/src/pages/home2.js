@@ -28,9 +28,9 @@ class Home extends PureComponent {
   }
 }
 
-const mapStateToProps = function (state) {
+const mapStateToProps = function (getState) {
   return {
-    counter: state.counter,
+    counter: getState.counter,
   };
 };
 

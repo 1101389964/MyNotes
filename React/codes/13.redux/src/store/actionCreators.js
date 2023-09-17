@@ -32,19 +32,28 @@ export const changeRedommendAction = recommends => ({
   recommends: recommends
 });
 
-// 不能再action必须返回一个对象，对于异步任务需要借助中间件
-/* export const otherChangeRedommendAction = () => {
+// 不能再action必须返回一个对象，对于异步任务需要借助中间件,否则返回的是没有结果的数组。
+export const otherChangeRedommendAction = () => {
+  const res = {
+    type: CHANGE_RECOMMEND,
+    recommends: [],
+  }
   axios({
     url: 'http://123.207.32.32:8000/home/multidata'
   }).then(res => {
     const data = res.data.data;
     console.log('data = ', data);
-    return {
-      type: CHANGE_RECOMMEND,
-      recommends: data.recommend.list
-    };
+    // return {
+    //   type: CHANGE_RECOMMEND,
+    //   recommends: data.recommend.list
+    // };
+    res.recommends = data.recommend.list
   });
-}; */
+  // recommends为空
+  return {
+    ...res
+  }
+};
 
 //使用redux-thunk中间件可以dispatch函数,进行异步请求。
 //redux-thunk感觉不使用中间件也可以，在返回对象的前面使用axios，但是两个action都需要在前面添加axios
