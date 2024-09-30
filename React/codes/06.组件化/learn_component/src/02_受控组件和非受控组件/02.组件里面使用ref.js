@@ -38,19 +38,32 @@ export default class App extends PureComponent {
   render() {
     return (
       <div>
+        {/* 1、使用createRef创建ref */}
         <Son ref={this.refSon} />
+        {/* 2、直接赋值 */}
+        <Son ref={((ref) => {this.ontherRef = ref})} />
         <button
           onClick={() => {
-            this.addSonNumber();
+            this.addSonNumber1();
           }}
         >
-          子组件number+1
+          1、子组件number+1
+        </button>
+        <button
+          onClick={() => {
+            this.addSonNumber2();
+          }}
+        >
+          2、子组件number+1
         </button>
       </div>
     );
   }
-  addSonNumber() {
+  addSonNumber1() {
     /* 在父组件里面获取子组件里面的方法，实现子组件number自加 */
     this.refSon.current.addNumber();
+  }
+  addSonNumber2() {
+    this.ontherRef.addNumber()
   }
 }

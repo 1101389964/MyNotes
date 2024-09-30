@@ -8,7 +8,7 @@
  */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './01_组件化/01.组件的两种定义方式';
+import App from './02_受控组件和非受控组件/02.组件里面使用ref';
 //import "./style.css";
 
 ReactDOM.render(<App />, document.getElementById('root'));
